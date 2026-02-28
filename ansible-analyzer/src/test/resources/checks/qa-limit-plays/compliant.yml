@@ -1,0 +1,5 @@
+# Compliant: playbook with few plays (under limit 10)
+- hosts: all
+  tasks:
+    - name: Ping
+      ping:

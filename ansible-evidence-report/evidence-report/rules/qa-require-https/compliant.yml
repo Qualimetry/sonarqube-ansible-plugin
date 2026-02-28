@@ -1,0 +1,7 @@
+# Compliant: HTTPS
+- hosts: all
+  tasks:
+    - name: Fetch
+      get_url:
+        url: https://example.com/file
+        dest: /tmp/file

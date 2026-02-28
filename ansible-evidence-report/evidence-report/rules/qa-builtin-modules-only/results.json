@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-builtin-modules-only",
+  "displayName": "Qa Builtin Modules Only",
+  "severity": "MINOR",
+  "defaultActive": false,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":5}],
+      "actualIssues": [{"line":5,"message":"Use only builtin modules (ansible.builtin.*); avoid community.general.aws_s3."}],
+      "mismatches": []
+    }
+  ]
+}

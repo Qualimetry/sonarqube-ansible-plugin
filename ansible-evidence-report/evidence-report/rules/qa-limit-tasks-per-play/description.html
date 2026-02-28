@@ -1,0 +1,23 @@
+<p>Plays with too many tasks are hard to maintain, review, and debug. A configurable limit encourages splitting into multiple plays or roles so each unit has a clear purpose and manageable size.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>This play has dozens of tasks that could be grouped into roles or separate plays.</li><li>You want to improve readability and reuse.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Extract related tasks into roles. Use multiple plays (or import_playbook) to split by host group or concern.</li><li>Set a project-specific limit (e.g. 20–50 tasks per play) and enforce it via this rule.</li></ul>
+<h2>Noncompliant</h2>
+<pre># A play with 50+ tasks in one block
+- hosts: all
+  tasks:
+    - name: Task 1
+      debug: {}
+    # ... 50+ tasks</pre>
+<h2>Compliant</h2>
+<pre>- hosts: all
+  roles:
+    - common
+    - app
+- hosts: db
+  tasks:
+    - name: Configure DB
+      template: { src: a.conf.j2, dest: /etc/a.conf }</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html">Ansible - Roles</a></li></ul>

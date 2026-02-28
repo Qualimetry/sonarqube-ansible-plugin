@@ -1,0 +1,15 @@
+<p>Setting environment variables inline (e.g. in the shell command string) is hard to read and can cause quoting issues. Use the task-level environment key (or env:) so the variables are clear and correctly passed to the module.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You embed environment variables in a command string (e.g. FOO=bar mycmd).</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Use the environment keyword on the task with a dict of variable names and values. Use environment with block when multiple tasks share the same env.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Run with env
+  command: FOO=bar /usr/bin/app</pre>
+<h2>Compliant</h2>
+<pre>- name: Run with env
+  command: /usr/bin/app
+  environment:
+    FOO: bar</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_environment.html">Ansible - Environment variables</a></li></ul>

@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-max-line-length",
+  "displayName": "Qa Max Line Length",
+  "severity": "MINOR",
+  "defaultActive": true,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":7}],
+      "actualIssues": [{"line":7,"message":"Line length exceeds 160 characters."}],
+      "mismatches": []
+    }
+  ]
+}

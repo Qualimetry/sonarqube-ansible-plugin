@@ -1,0 +1,5 @@
+# Compliant: import_tasks
+- hosts: all
+  tasks:
+    - name: Include
+      import_tasks: other.yml

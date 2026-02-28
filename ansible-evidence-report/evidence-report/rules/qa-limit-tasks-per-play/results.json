@@ -1,0 +1,16 @@
+{
+  "ruleKey": "qa-limit-tasks-per-play",
+  "displayName": "Qa Limit Tasks Per Play",
+  "severity": "MINOR",
+  "defaultActive": true,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    }
+  ]
+}

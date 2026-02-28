@@ -1,0 +1,6 @@
+# Play without tags
+# Noncompliant
+- hosts: all
+  tasks:
+    - name: Ping
+      ping:

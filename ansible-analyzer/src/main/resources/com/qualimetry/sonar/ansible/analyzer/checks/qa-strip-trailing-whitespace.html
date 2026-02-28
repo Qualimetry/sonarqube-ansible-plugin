@@ -1,0 +1,27 @@
+<p>Trailing spaces or tabs at the end of lines add no meaning and clutter version control diffs. They can also cause inconsistent behavior in some contexts (e.g. copied strings, comparisons).</p>
+<p>Removing trailing whitespace keeps playbooks clean and makes diffs easier to read. Most editors can trim whitespace on save or on demand.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>You often paste or type at the end of lines without clearing extra spaces.</li>
+  <li>Your team wants clean diffs and consistent formatting.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Enable "Trim trailing whitespace" (or equivalent) in your editor.</li>
+  <li>Use a formatter or pre-commit hook that strips trailing whitespace.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- hosts: all 
+  tasks: []</pre>
+
+<h2>Compliant</h2>
+<pre>- hosts: all
+  tasks: []</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li>Editor settings for "trim trailing whitespace" or "strip whitespace"</li>
+</ul>

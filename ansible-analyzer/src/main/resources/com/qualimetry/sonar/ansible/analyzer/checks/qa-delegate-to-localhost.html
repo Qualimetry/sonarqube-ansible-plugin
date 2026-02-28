@@ -1,0 +1,28 @@
+<p>The <code>local_action</code> shorthand is deprecated. Ansible recommends using the normal module syntax with <code>delegate_to: localhost</code> so that task structure is consistent and future-proof.</p>
+<p><code>local_action</code> was a convenience for running a module on the control node. The same effect is achieved with <code>delegate_to: localhost</code>, which is the supported pattern in current and future Ansible versions.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>You are using <code>local_action</code> in any task.</li>
+  <li>You want to avoid deprecated syntax that may be removed later.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Replace <code>local_action: module_name</code> with the module name as the key and <code>delegate_to: localhost</code>.</li>
+  <li>Use the args form for the module when applicable.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- name: Run locally
+  local_action: ping</pre>
+
+<h2>Compliant</h2>
+<pre>- name: Run locally
+  ping:
+  delegate_to: localhost</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_delegation.html">Ansible - Delegation</a></li>
+</ul>

@@ -1,0 +1,10 @@
+# Compliant: item_ prefix
+- hosts: all
+  tasks:
+    - name: Loop
+      debug:
+        msg: "{{ item_name }}"
+      loop:
+        - a
+      loop_control:
+        loop_var: item_name

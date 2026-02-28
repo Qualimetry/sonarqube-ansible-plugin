@@ -1,0 +1,9 @@
+# same_owner: true
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Copy
+      copy:
+        src: a
+        dest: /tmp/a
+        same_owner: true
