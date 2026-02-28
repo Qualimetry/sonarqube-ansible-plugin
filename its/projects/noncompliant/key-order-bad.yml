@@ -1,0 +1,12 @@
+# key-order: name after module in multiple tasks
+- hosts: all
+  tasks:
+    - ping:
+      name: Ping hosts
+    - copy:
+      name: Copy file
+      dest: /tmp/x
+    - ansible.builtin.file:
+      name: Create dir
+      path: /tmp/dir
+      state: directory

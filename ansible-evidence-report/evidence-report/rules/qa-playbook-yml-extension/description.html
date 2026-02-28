@@ -1,0 +1,33 @@
+<p>Playbook files should use a <code>.yml</code> or <code>.yaml</code> extension so tools, editors, and CI can identify them as YAML and apply the right parsing and syntax highlighting. Extensionless or non-standard names can be skipped or misprocessed.</p>
+<p>Ansible discovers playbooks by path; using a standard extension is a convention that improves tooling support and makes the intent of the file clear to humans and automation.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>Your playbook file has no extension or uses a custom one (e.g. <code>.play</code>).</li>
+  <li>CI, editors, or other tools rely on file extension to detect YAML.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Name playbook files with <code>.yml</code> or <code>.yaml</code> (e.g. <code>site.yml</code>, <code>deploy.yaml</code>).</li>
+  <li>Use the same convention across the project for consistency.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre># file: deploy (no extension)
+- hosts: all
+  tasks:
+    - name: Run app
+      command: /usr/bin/app</pre>
+
+<h2>Compliant</h2>
+<pre># file: deploy.yml (or deploy.yaml)
+- hosts: all
+  tasks:
+    - name: Run app
+      command: /usr/bin/app</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html">Ansible - Intro to playbooks</a></li>
+</ul>

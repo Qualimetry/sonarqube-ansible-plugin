@@ -1,0 +1,5 @@
+# Compliant: no tab characters
+- hosts: all
+  tasks:
+    - name: Ping
+      ping:

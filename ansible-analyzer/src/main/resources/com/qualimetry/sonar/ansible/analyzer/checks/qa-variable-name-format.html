@@ -1,0 +1,13 @@
+<p>Variable names should be lowercase with only letters, numbers, and underscores so they are consistent with Ansible and YAML conventions and avoid conflicts with reserved names.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You use uppercase or hyphens in variable names.</li><li>You want to align with common Ansible style (e.g. group_vars, role vars).</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Use lowercase and underscores (e.g. my_var, app_port). Avoid hyphens and mixed case.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- set_fact:
+    MyVar: value</pre>
+<h2>Compliant</h2>
+<pre>- set_fact:
+    my_var: value</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html">Ansible - Variables</a></li></ul>

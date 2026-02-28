@@ -1,0 +1,17 @@
+<p>Use when: var rather than when: var == "yes" (or "true", "no", "false"). Ansible treats truthy/falsy values in conditions; literal string comparison is redundant and can be wrong if the variable is already a boolean.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You are comparing a variable to "yes", "true", "no", or "false" in a when condition.</li><li>The variable is set from a role default or fact that may already be boolean.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Use <code>when: my_feature</code> for a positive check and <code>when: not my_feature</code> for negative. Use explicit comparison only when you must match a specific string value.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Run when enabled
+  debug:
+    msg: "running"
+  when: my_feature == "yes"</pre>
+<h2>Compliant</h2>
+<pre>- name: Run when enabled
+  debug:
+    msg: "running"
+  when: my_feature</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_conditionals.html">Ansible - Conditionals</a></li></ul>

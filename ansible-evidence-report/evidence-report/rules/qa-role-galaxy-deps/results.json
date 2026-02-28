@@ -1,0 +1,16 @@
+{
+  "ruleKey": "qa-role-galaxy-deps",
+  "displayName": "Qa Role Galaxy Deps",
+  "severity": "MINOR",
+  "defaultActive": false,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "default-compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    }
+  ]
+}

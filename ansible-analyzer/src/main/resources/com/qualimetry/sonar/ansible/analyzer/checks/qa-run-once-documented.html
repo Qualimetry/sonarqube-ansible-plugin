@@ -1,0 +1,14 @@
+<p>run_once runs the task on one host only; other hosts skip it. Use only when the task must run once (e.g. coordinator). Document why run_once is needed.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>This task must run on exactly one host.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Use run_once for coordination or registering a value once. Avoid for tasks that must run on every host.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- package: { name: foo }
+  run_once: true  # wrong: install should run on all</pre>
+<h2>Compliant</h2>
+<pre>- set_fact:
+    cluster_id: "{{ ansible_date_time.epoch }}"
+  run_once: true</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_delegation.html#run-once">Ansible - run_once</a></li></ul>

@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-command-not-shell-when-possible",
+  "displayName": "Qa Command Not Shell When Possible",
+  "severity": "MINOR",
+  "defaultActive": false,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":5}],
+      "actualIssues": [{"line":5,"message":"Use the \"command\" module instead of \"shell\" when you do not need shell features (pipes, redirects, etc.)."}],
+      "mismatches": []
+    }
+  ]
+}

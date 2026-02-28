@@ -1,0 +1,12 @@
+<p>Secrets (passwords, keys, tokens) should be stored in Ansible Vault-encrypted files so they are not exposed in plain text in the repo or on disk. Use vault for any variable or file that holds sensitive data.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You store secrets in plain vars or files.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Encrypt files with ansible-vault encrypt and reference them with --ask-vault-pass or vault password file. Use vault for group_vars or role vars that contain secrets.</li></ul>
+<h2>Noncompliant</h2>
+<pre># vars/main.yml with plain secret
+db_password: secret123</pre>
+<h2>Compliant</h2>
+<pre># Encrypt with ansible-vault encrypt vars/vault.yml and pass with -e @vault.yml</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/vault_guide/index.html">Ansible Vault</a></li></ul>

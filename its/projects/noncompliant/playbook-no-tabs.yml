@@ -1,0 +1,8 @@
+# Violates no-tabs (tab on line 2 and 4)
+- hosts: all
+	  tasks:
+  - name: Ping
+    ping:
+	  - name: Copy with tab
+	    copy:
+	      dest: /tmp/x

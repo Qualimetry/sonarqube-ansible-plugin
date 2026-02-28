@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.qualimetry.sonar</groupId>
+  <artifactId>ansible-its</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+
+  <name>Ansible Analyzer - Integration Tests</name>
+  <description>
+    Integration tests for the Ansible Analyzer SonarQube plugin.
+    Tests run against a live SonarQube server (UAT) with the plugin installed.
+    Compliant and noncompliant projects are scanned and left on the server for study.
+
+    This module is standalone - run from its/ with:
+    mvn verify -Pits -Dsonar.host.url=UAT_URL -Dsonar.token=YOUR_TOKEN
+  </description>
+
+  <organization>
+    <name>SHAZAM Analytics Ltd</name>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>17</maven.compiler.release>
+    <junit.version>5.11.4</junit.version>
+    <assertj.version>3.27.3</assertj.version>
+    <gson.version>2.11.0</gson.version>
+    <sonar.host.url>http://localhost:9000</sonar.host.url>
+    <sonar.token></sonar.token>
+    <sonar.scanner.bin></sonar.scanner.bin>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>${gson.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <release>17</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>its</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <version>3.2.5</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>integration-test</goal>
+                  <goal>verify</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <includes>
+                <include>**/*IT.java</include>
+              </includes>
+              <systemPropertyVariables>
+                <sonar.host.url>${sonar.host.url}</sonar.host.url>
+                <sonar.token>${sonar.token}</sonar.token>
+                <sonar.scanner.bin>${sonar.scanner.bin}</sonar.scanner.bin>
+              </systemPropertyVariables>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

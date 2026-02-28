@@ -1,0 +1,31 @@
+<p>Files that do not end with a newline can cause problems with some tools (e.g. concatenation, diff, or CI scripts that expect a trailing newline). POSIX defines a line as ending with a newline character.</p>
+<p>Many style guides and linters require a final newline. Adding one is a small change that improves consistency and avoids tooling issues.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>Your editor is configured to not add a newline at end of file.</li>
+  <li>Files are processed by scripts that assume a trailing newline.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Enable "Insert final newline" (or equivalent) in your editor.</li>
+  <li>Run a formatter or linter that enforces this rule before committing.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- hosts: all
+  tasks: []</pre>
+<p>(no newline after the last line)</p>
+
+<h2>Compliant</h2>
+<pre>- hosts: all
+  tasks: []
+
+</pre>
+<p>(newline after the last line)</p>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap03.html#tag_03_206">POSIX - Definition of a line</a></li>
+</ul>

@@ -1,0 +1,22 @@
+<p>Plays without tags cannot be selected with --tags or --skip-tags, which makes it harder to run a subset of the playbook (e.g. only "config" or "deploy"). Adding tags to plays improves flexibility and CI usage.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You run this playbook with --tags or --skip-tags.</li><li>You want to support partial runs (e.g. only install, only config).</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Add a tags list to each play with meaningful names (e.g. deploy, config, install). Use consistent tag names across playbooks.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- hosts: all
+  tasks:
+    - name: Do something
+      debug:
+        msg: "ok"</pre>
+<h2>Compliant</h2>
+<pre>- hosts: all
+  tags:
+    - deploy
+    - app
+  tasks:
+    - name: Do something
+      debug:
+        msg: "ok"</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_tags.html">Ansible - Tags</a></li></ul>

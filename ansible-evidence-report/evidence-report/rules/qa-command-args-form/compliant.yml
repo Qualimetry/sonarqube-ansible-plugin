@@ -1,0 +1,6 @@
+# Compliant: command with args
+- hosts: all
+  tasks:
+    - name: Run
+      command:
+        cmd: echo hi

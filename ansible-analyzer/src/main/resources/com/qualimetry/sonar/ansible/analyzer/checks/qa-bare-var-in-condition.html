@@ -1,0 +1,17 @@
+<p>In when or loop, use the variable name alone (bare variable) rather than {{ var }} when you only need a simple reference. Ansible expands variables automatically; the extra Jinja delimiters are redundant and can change how the value is interpreted (e.g. string vs boolean).</p>
+<h3>Ask yourself whether</h3>
+<ul><li>Your when or loop uses a single variable with no expression (e.g. no comparison, no filter).</li><li>You want consistent, idiomatic Ansible style.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Use <code>when: my_flag</code> instead of <code>when: "{{ my_flag }}"</code>. Use <code>loop: my_list</code> instead of <code>loop: "{{ my_list }}"</code> when it is a simple variable reference.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Run when flag is set
+  debug:
+    msg: ok
+  when: "{{ my_flag }}"</pre>
+<h2>Compliant</h2>
+<pre>- name: Run when flag is set
+  debug:
+    msg: ok
+  when: my_flag</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/reference_appendices/faq.html#when-should-i-use-var-and-when-var">Ansible FAQ - When to use {{ }}</a></li></ul>

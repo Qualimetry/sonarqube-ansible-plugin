@@ -1,0 +1,26 @@
+<p>Reading file contents from the control node (e.g. with <code>slurp</code> or <code>lookup('file')</code>) and using them in tasks can expose sensitive data in logs or variables if the file contains secrets. Reading from the remote with <code>slurp</code> and then registering the result can also leak content if the result is used in a way that gets logged.</p>
+<p>Ensure that file reads for sensitive content are not logged and that variables holding file content are not exposed. Prefer modules that operate on paths (e.g. copy, template) or use no_log and avoid passing sensitive content through task output.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You read a file that may contain secrets (keys, passwords, tokens).</li><li>The content is stored in a variable or register that might appear in logs or debug output.</li></ul>
+<h3>Recommended secure coding practices</h3>
+<ul><li>Use <code>no_log: true</code> for tasks that read or use sensitive file content. Avoid registering sensitive content and then using it in a way that is logged.</li><li>Prefer Ansible Vault or a secrets manager for sensitive data instead of reading from plain files.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Read secret file
+  slurp:
+    src: /etc/secret
+  register: secret_content
+- name: Use it
+  debug:
+    var: secret_content.content</pre>
+<h2>Compliant</h2>
+<pre>- name: Read secret file
+  slurp:
+    src: /etc/secret
+  register: secret_content
+  no_log: true
+- name: Use it (do not log)
+  some_module:
+    secret: "{{ secret_content.content | b64decode }}"
+  no_log: true</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/slurp_module.html">Ansible - slurp module</a></li><li><a href="https://cwe.mitre.org/data/definitions/532.html">CWE-532 - Insertion of Sensitive Information into Log File</a></li></ul>

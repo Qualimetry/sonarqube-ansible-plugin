@@ -1,0 +1,7 @@
+# Compliant: copy module
+- hosts: all
+  tasks:
+    - name: Copy file
+      copy:
+        src: a.conf
+        dest: /etc/a.conf

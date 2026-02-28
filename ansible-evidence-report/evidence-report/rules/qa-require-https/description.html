@@ -1,0 +1,35 @@
+<p>Using plain HTTP for downloads or API calls allows network eavesdropping and man-in-the-middle attacks. Credentials and data can be read or modified in transit.</p>
+<p>Modules such as <code>get_url</code>, <code>uri</code>, and <code>community.general.rhsm</code> send requests to URLs you provide. When the URL uses <code>http://</code>, traffic is unencrypted. Attackers on the same network (or in a position to intercept traffic) can capture or alter the content and any credentials sent in headers or the URL.</p>
+<p>Use HTTPS (or another secure channel) for any URL that touches sensitive data or authentication. Reserve HTTP only for truly local or trusted endpoints where risk has been accepted.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>The URL points to an external or untrusted host.</li>
+  <li>The request sends or receives credentials or other sensitive data.</li>
+  <li>Playbooks run in an environment where network traffic could be intercepted.</li>
+</ul>
+
+<h3>Recommended secure coding practices</h3>
+<ul>
+  <li>Use <code>https://</code> for all external or sensitive URLs.</li>
+  <li>Validate TLS when possible (e.g. use valid certificates; avoid disabling verification unless necessary and documented).</li>
+  <li>Prefer package or role-based distribution for internal artifacts instead of HTTP downloads where feasible.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- name: Download file
+  get_url:
+    url: http://example.com/file.tar.gz
+    dest: /tmp/file.tar.gz</pre>
+
+<h2>Compliant</h2>
+<pre>- name: Download file
+  get_url:
+    url: https://example.com/file.tar.gz
+    dest: /tmp/file.tar.gz</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/get_url_module.html">Ansible - get_url module</a></li>
+  <li><a href="https://cwe.mitre.org/data/definitions/319.html">CWE-319 - Cleartext Transmission of Sensitive Information</a></li>
+</ul>

@@ -1,0 +1,6 @@
+# Uses deprecated local_action
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Local
+      local_action: ping

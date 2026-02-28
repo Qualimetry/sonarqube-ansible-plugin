@@ -1,0 +1,6 @@
+# set_fact with bad var name
+- hosts: all
+  tasks:
+# Noncompliant
+    - set_fact:
+        MyVar: value

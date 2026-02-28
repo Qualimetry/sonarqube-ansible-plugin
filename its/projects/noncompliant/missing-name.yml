@@ -1,0 +1,12 @@
+# name rule: tasks without name
+- hosts: all
+  tasks:
+    - ping:
+    - copy:
+        dest: /tmp/x
+    - file:
+        path: /tmp/d
+        state: directory
+    - name: This one has a name
+      debug:
+        msg: ok

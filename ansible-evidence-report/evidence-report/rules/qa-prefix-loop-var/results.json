@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-prefix-loop-var",
+  "displayName": "Qa Prefix Loop Var",
+  "severity": "MINOR",
+  "defaultActive": true,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":5}],
+      "actualIssues": [{"line":5,"message":"Prefer a prefix for loop_var (e.g. item_name) to avoid shadowing; current: \"x\"."}],
+      "mismatches": []
+    }
+  ]
+}

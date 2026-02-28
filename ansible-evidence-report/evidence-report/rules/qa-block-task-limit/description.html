@@ -1,0 +1,18 @@
+<p>Blocks with too many tasks become hard to read and maintain. A configurable limit encourages splitting into multiple blocks or roles so each block has a clear, focused purpose.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>This block has many tasks that could be split or moved to a role.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Keep blocks small. Extract related tasks into a role or use multiple blocks with descriptive names.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- block:
+    - name: Task 1
+      debug: {}
+    # ... 20+ tasks</pre>
+<h2>Compliant</h2>
+<pre>- block:
+    - name: Install
+      package: { name: foo }
+    - name: Configure
+      template: { src: a.j2, dest: /etc/a }</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_blocks.html">Ansible - Blocks</a></li></ul>
