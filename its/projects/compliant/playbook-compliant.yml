@@ -1,0 +1,47 @@
+# Compliant playbook - no violations for Qualimetry Way
+# Tags, FQCN, task names, no deprecated, proper structure
+---
+- name: Base setup
+  hosts: all
+  become: true
+  become_user: appuser
+  tags:
+    - setup
+    - base
+  tasks:
+    - name: Ensure directory exists
+      ansible.builtin.file:
+        path: /opt/app
+        state: directory
+        mode: 0755
+
+    - name: Deploy config file
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/templates/config.j2"
+        dest: /opt/app/config
+        mode: 0644
+        owner: appuser
+        group: appuser
+
+    - name: Start service
+      ansible.builtin.systemd:
+        name: app
+        state: started
+        daemon_reload: true
+
+- name: Web tier
+  hosts: webservers
+  tags:
+    - web
+  tasks:
+    - name: Install package
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: true
+
+    - name: Enable and start nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true

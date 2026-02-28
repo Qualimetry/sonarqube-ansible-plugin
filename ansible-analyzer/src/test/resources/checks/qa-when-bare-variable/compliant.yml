@@ -1,0 +1,6 @@
+# Compliant: bare when
+- hosts: all
+  tasks:
+    - name: Run
+      ping:
+      when: my_var

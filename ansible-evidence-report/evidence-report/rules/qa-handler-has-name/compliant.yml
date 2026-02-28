@@ -1,0 +1,7 @@
+# Compliant: handler with name
+- hosts: all
+  tasks: []
+  handlers:
+    - name: Restart service
+      service:
+        name: restarted

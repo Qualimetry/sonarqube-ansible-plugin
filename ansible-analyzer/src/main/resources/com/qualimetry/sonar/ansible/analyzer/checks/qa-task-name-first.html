@@ -1,0 +1,31 @@
+<p>Placing the task <code>name</code> before the module key improves readability and matches Ansible best practices. When <code>name</code> appears first, run output and logs show a clear label before the module name.</p>
+<p>Ansible allows <code>name</code> in any order, but putting it first is the recommended style. It makes playbooks easier to scan and aligns with most examples and style guides.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>You want playbook output to show a human-readable task name first.</li>
+  <li>Your style guide or team convention requires <code>name</code> before the module.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Always put <code>name</code> as the first key in each task.</li>
+  <li>Use a linter or formatter that enforces key order.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- copy:
+    src: a
+    dest: /tmp
+  name: Copy file</pre>
+
+<h2>Compliant</h2>
+<pre>- name: Copy file
+  copy:
+    src: a
+    dest: /tmp</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html">Ansible - Intro to playbooks</a></li>
+</ul>

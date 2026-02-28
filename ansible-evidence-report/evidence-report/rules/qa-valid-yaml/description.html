@@ -1,0 +1,33 @@
+<p>Playbooks and task files must be valid YAML. Invalid syntax causes the parser to fail and prevents Ansible from loading the file. Errors can be subtle (wrong indentation, unclosed brackets) and may only appear at runtime.</p>
+<p>YAML is indentation-sensitive and requires consistent structure. Fix syntax errors reported here before execution so the playbook loads correctly.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>The file has mixed tabs and spaces, or inconsistent indentation.</li>
+  <li>There are unclosed quotes, brackets, or list items.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Use spaces only for indentation; keep 2 or 4 spaces consistently.</li>
+  <li>Quote strings that contain colons or hashes. Validate with ansible-playbook --syntax-check.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- hosts: all
+  tasks:
+    - name: Bad
+      copy: [unclosed</pre>
+
+<h2>Compliant</h2>
+<pre>- hosts: all
+  tasks:
+    - name: Copy file
+      copy:
+        src: a
+        dest: /tmp</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html">Ansible - YAML Syntax</a></li>
+</ul>

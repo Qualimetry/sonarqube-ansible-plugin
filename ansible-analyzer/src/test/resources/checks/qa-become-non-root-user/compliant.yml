@@ -1,0 +1,7 @@
+# Compliant: non-root become_user
+- hosts: all
+  tasks:
+    - name: Run as app user
+      ping:
+      become_user: appuser
+      become: true

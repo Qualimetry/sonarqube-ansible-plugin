@@ -1,0 +1,13 @@
+# Normalise all text files to LF in the repository and on checkout.
+# This overrides any per-machine core.autocrlf setting so that builds,
+# tests, and byte-sensitive checks behave identically on every OS.
+* text=auto eol=lf
+
+# Truly binary files - never touch these.
+*.jar binary
+*.zip binary
+*.png binary
+*.gif binary
+*.ico binary
+*.class binary
+*.sqlite binary

@@ -1,0 +1,15 @@
+<p>Package tasks that use "latest" or no version are not reproducible. Pin versions (via role defaults, vars, or package name) so installs are consistent across environments and time.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You use state: latest or omit version.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Set a specific version in vars or role defaults and use it in the package task. Avoid state: latest in production.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- apt:
+    name: nginx
+    state: latest</pre>
+<h2>Compliant</h2>
+<pre>- apt:
+    name: "nginx={{ nginx_version }}"
+    state: present</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html">Ansible - apt module</a></li></ul>

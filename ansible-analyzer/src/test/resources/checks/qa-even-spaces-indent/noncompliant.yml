@@ -1,0 +1,4 @@
+# Odd spaces (3) under - hosts
+- hosts: all
+# Noncompliant
+   tasks:

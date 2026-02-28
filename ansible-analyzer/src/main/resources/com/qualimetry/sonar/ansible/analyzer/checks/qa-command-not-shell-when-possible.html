@@ -1,0 +1,18 @@
+<p>Use command instead of shell when you do not need shell features (pipes, redirects, variable expansion). The command module runs the program directly without a shell, which is safer and avoids parsing or injection issues.</p>
+<p>shell passes the task to a shell (e.g. /bin/sh). For simple invocations (one executable and arguments), command is the better choice.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You use shell but do not need pipes, redirects, or shell variables.</li><li>You want to reduce the risk of shell parsing or injection.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Use command for simple runs. Use shell only when you need pipes, redirects, or other shell features.</li><li>When using shell, prefer the args form.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Echo message
+  shell: echo hello world</pre>
+<h2>Compliant</h2>
+<pre>- name: Echo message
+  command:
+    cmd: echo hello world</pre>
+<p>Use shell when you need pipes or other shell features:</p>
+<pre>- name: Count lines
+  shell: cat /etc/hosts | wc -l</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/command_module.html">Ansible - command module</a></li><li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html">Ansible - shell module</a></li></ul>

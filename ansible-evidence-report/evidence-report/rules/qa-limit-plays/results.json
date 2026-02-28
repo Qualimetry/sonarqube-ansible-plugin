@@ -1,0 +1,16 @@
+{
+  "ruleKey": "qa-limit-plays",
+  "displayName": "Qa Limit Plays",
+  "severity": "MINOR",
+  "defaultActive": true,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    }
+  ]
+}

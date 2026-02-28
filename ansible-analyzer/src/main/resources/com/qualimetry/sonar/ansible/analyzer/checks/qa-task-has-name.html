@@ -1,0 +1,29 @@
+<p>Every task should have a name so that playbook output and logs are readable. Unnamed tasks show only the module name, which makes debugging and auditing harder.</p>
+<p>The name field is displayed when Ansible runs the task. Without it, output is less informative and it is harder to find the failing task in a long playbook.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>Someone will need to read playbook output or logs to understand what ran.</li>
+  <li>You want to support debugging and compliance auditing.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Add a short, descriptive name to every task. Place name first in the task.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- hosts: all
+  tasks:
+    - ping:</pre>
+
+<h2>Compliant</h2>
+<pre>- hosts: all
+  tasks:
+    - name: Ping host
+      ping:</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html">Ansible - Intro to playbooks</a></li>
+</ul>

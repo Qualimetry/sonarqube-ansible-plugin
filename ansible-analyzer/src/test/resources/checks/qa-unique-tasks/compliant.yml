@@ -1,0 +1,7 @@
+# Compliant: distinct tasks
+- hosts: all
+  tasks:
+    - name: Ping once
+      ping:
+    - name: Ping again with different name
+      ping:

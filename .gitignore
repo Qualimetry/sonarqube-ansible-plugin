@@ -1,0 +1,43 @@
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vs/
+.cursor/
+slnx.sqlite
+**/slnx.sqlite
+*.sqlite
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build
+target/
+hs_err_pid*.log
+*.class
+*.jar
+!**/src/main/resources/**/*.jar
+
+# OS
+.DS_Store
+Thumbs.db
+/.vs/slnx.sqlite
+
+# Maven Shade plugin
+dependency-reduced-pom.xml
+
+# Node / VS Code extension
+node_modules/
+out/
+dist/
+*.vsix
+vscode-client/server/
+
+# SonarQube scanner work directories
+.scannerwork/
+
+# Local secrets (never commit)
+.github-credentials
+local/

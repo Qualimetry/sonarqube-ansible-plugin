@@ -1,0 +1,21 @@
+<p>When using loop_control.loop_var, give the variable a prefix (e.g. item_) so it does not shadow the default item and is clearly a loop variable. That avoids confusion in nested loops and makes templates easier to read.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You use loop_var with a name that could conflict with other variables (e.g. user, file).</li><li>You have nested loops and need distinct loop variable names.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Use a prefix like item_ (e.g. item_user, item_file) for loop_var so the variable is clearly from a loop.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Create users
+  user:
+    name: "{{ user }}"
+  loop: "{{ users }}"
+  loop_control:
+    loop_var: user</pre>
+<h2>Compliant</h2>
+<pre>- name: Create users
+  user:
+    name: "{{ item_user }}"
+  loop: "{{ users }}"
+  loop_control:
+    loop_var: item_user</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_loops.html">Ansible - Loops</a></li></ul>

@@ -1,0 +1,25 @@
+<p>Using block groups related tasks and allows a single rescue or always for the whole group. That improves readability and makes it easier to handle failures for a set of tasks (e.g. install and configure) in one place.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You have a sequence of related tasks that share the same when, become, or error handling.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Wrap related tasks in a block. Use rescue and always when you need to handle failures or cleanup for the group.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Task 1
+  debug: { msg: a }
+- name: Task 2
+  debug: { msg: b }
+- name: Task 3
+  debug: { msg: c }</pre>
+<h2>Compliant</h2>
+<pre>- block:
+    - name: Task 1
+      debug: { msg: a }
+    - name: Task 2
+      debug: { msg: b }
+    - name: Task 3
+      debug: { msg: c }
+  rescue:
+    - name: On failure
+      debug: { msg: failed }</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_blocks.html">Ansible - Blocks</a></li></ul>

@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-avoid-literal-bool-compare",
+  "displayName": "Qa Avoid Literal Bool Compare",
+  "severity": "MINOR",
+  "defaultActive": true,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":5}],
+      "actualIssues": [{"line":5,"message":"Prefer when: var over when: var == \"yes\" (or similar literal)."}],
+      "mismatches": []
+    }
+  ]
+}

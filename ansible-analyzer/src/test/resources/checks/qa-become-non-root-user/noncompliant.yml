@@ -1,0 +1,8 @@
+# become_user root
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Run as root
+      ping:
+      become_user: root
+      become: true

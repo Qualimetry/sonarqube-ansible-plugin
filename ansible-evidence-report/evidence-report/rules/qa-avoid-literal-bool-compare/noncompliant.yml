@@ -1,0 +1,7 @@
+# when var == "yes"
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Run
+      ping:
+      when: my_var == "yes"

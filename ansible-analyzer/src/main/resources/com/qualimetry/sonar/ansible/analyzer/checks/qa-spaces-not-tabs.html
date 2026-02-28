@@ -1,0 +1,29 @@
+<p>Using tab characters for indentation causes inconsistent behavior across editors and systems. YAML is space-sensitive; some parsers treat tabs differently, which can lead to parse errors or subtle bugs.</p>
+<p>Spaces are the standard for YAML indentation. Using only spaces (typically 2 or 4 per level) keeps playbooks portable and avoids "tab vs space" issues in version control and CI.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>Your editor inserts tabs when you press Tab.</li>
+  <li>The file was edited on a system or editor with different tab settings.</li>
+  <li>You want consistent display and parsing in all environments.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Configure your editor to insert spaces when pressing Tab (e.g. "Insert spaces" in VS Code).</li>
+  <li>Use a YAML or Ansible formatter/linter that enforces spaces.</li>
+  <li>Search for tab characters (<code>\t</code>) and replace with the same number of spaces as your indent width.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- hosts: all
+	tasks:    # tab used</pre>
+
+<h2>Compliant</h2>
+<pre>- hosts: all
+  tasks:</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://yaml.org/spec/1.2/spec.html#id2777534">YAML - Indentation</a></li>
+</ul>
