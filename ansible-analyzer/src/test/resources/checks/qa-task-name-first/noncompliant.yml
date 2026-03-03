@@ -1,0 +1,8 @@
+# Module key before name
+- hosts: all
+  tasks:
+# Noncompliant {{Put "name" before the module key ("copy").}}
+    - copy:
+        src: a
+        dest: /tmp
+      name: Copy file

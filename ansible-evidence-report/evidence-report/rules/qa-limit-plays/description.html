@@ -1,0 +1,19 @@
+<p>Playbooks with many plays in one file become hard to navigate and maintain. Splitting into multiple playbook files (and using import_playbook) keeps each file focused and makes it easier to run subsets.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>This playbook has many plays that could be split by environment or concern.</li><li>You want a main entry point that imports smaller playbooks.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Use import_playbook to include other playbook files. Keep the main file (e.g. site.yml) to a few plays and import the rest.</li></ul>
+<h2>Noncompliant</h2>
+<pre># 10+ plays in one file
+- hosts: a
+  tasks: []
+- hosts: b
+  tasks: []</pre>
+<h2>Compliant</h2>
+<pre># site.yml - main entry
+- hosts: all
+  tasks: []
+- import_playbook: db.yml
+- import_playbook: app.yml</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/import_playbook_module.html">Ansible - import_playbook</a></li></ul>

@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-handler-has-name",
+  "displayName": "Qa Handler Has Name",
+  "severity": "MINOR",
+  "defaultActive": true,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":6}],
+      "actualIssues": [{"line":6,"message":"Handlers should have a name."}],
+      "mismatches": []
+    }
+  ]
+}

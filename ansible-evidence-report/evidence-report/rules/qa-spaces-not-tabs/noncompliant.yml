@@ -1,0 +1,6 @@
+# Violates no-tabs (tab on line 4)
+- hosts: all
+# Noncompliant {{Use spaces for indentation instead of tabs.}}
+	  tasks:
+  - name: Ping
+    ping:

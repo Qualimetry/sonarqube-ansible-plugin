@@ -1,0 +1,4 @@
+# Compliant: lowercase role name
+- hosts: all
+  roles:
+    - my_role

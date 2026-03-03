@@ -1,0 +1,5 @@
+# Compliant: no trailing whitespace
+- hosts: all
+  tasks:
+    - name: Ping
+      ping:

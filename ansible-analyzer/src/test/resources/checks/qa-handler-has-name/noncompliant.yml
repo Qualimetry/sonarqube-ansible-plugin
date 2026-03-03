@@ -1,0 +1,7 @@
+# handler without name
+- hosts: all
+  tasks: []
+  handlers:
+# Noncompliant
+    - debug:
+        msg: hi

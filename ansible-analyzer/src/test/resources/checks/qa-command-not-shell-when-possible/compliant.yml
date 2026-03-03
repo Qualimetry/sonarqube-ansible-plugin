@@ -1,0 +1,5 @@
+# Compliant: shell when needed (pipe)
+- hosts: all
+  tasks:
+    - name: Grep
+      shell: grep foo /etc/hosts | head -1

@@ -1,0 +1,7 @@
+# command cp instead of copy
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Copy file
+      command:
+        cmd: cp /tmp/a.conf /etc/a.conf

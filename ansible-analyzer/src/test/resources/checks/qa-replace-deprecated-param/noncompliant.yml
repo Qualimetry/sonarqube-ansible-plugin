@@ -1,0 +1,9 @@
+# force parameter
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Copy
+      copy:
+        src: a
+        dest: /tmp/a
+        force: yes

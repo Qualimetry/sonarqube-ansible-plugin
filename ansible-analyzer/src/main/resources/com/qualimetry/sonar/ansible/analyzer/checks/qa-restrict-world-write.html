@@ -1,0 +1,20 @@
+<p>World-writable file modes (e.g. 0666, 0777, or modes that include write for "other") allow any user on the system to modify the file. That can lead to tampering, privilege escalation, or execution of malicious code.</p>
+<p>Restrict file permissions to the owner and optionally the group. Use modes such as 0644 or 0755 unless there is a documented reason for broader access.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>The file contains configuration, data, or code that should not be writable by all users.</li><li>The mode includes write (2) or execute (1) for "other".</li></ul>
+<h3>Recommended secure coding practices</h3>
+<ul><li>Use 0644 for regular files and 0755 for executables. Avoid 0666, 0777, and similar world-writable modes.</li><li>Set owner and group explicitly when possible.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Create config
+  copy:
+    src: app.conf
+    dest: /etc/app.conf
+    mode: '0666'</pre>
+<h2>Compliant</h2>
+<pre>- name: Create config
+  copy:
+    src: app.conf
+    dest: /etc/app.conf
+    mode: '0644'</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://cwe.mitre.org/data/definitions/732.html">CWE-732 - Incorrect Permission Assignment for Critical Resource</a></li></ul>

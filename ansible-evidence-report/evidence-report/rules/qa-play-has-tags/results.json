@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-play-has-tags",
+  "displayName": "Qa Play Has Tags",
+  "severity": "MINOR",
+  "defaultActive": true,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":3}],
+      "actualIssues": [{"line":3,"message":"Play should have tags for selective execution."}],
+      "mismatches": []
+    }
+  ]
+}

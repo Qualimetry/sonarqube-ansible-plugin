@@ -1,0 +1,15 @@
+<p>Using latest or no version for packages leads to different versions across runs. Pin a version for reproducible installs.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You install packages without a version.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Pin versions in vars or role defaults. Avoid state: latest in production.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- package:
+    name: nginx
+    state: latest</pre>
+<h2>Compliant</h2>
+<pre>- package:
+    name: "nginx={{ nginx_version }}"
+    state: present</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/package_module.html">Ansible - package module</a></li></ul>

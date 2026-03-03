@@ -1,0 +1,20 @@
+<p>Variables that are defined but never used add noise and can cause confusion about what is actually in use. Remove them or use them so the playbook stays clear and maintainable.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You have leftover variables from refactoring or copy-paste.</li><li>You want to keep the playbook free of dead code.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Delete or comment out unused variables. If a variable is optional (e.g. for override), document it and ensure it is referenced when set.</li></ul>
+<h2>Noncompliant</h2>
+<pre>vars:
+  unused_var: value
+  used_var: other
+tasks:
+  - debug:
+      var: used_var</pre>
+<h2>Compliant</h2>
+<pre>vars:
+  used_var: other
+tasks:
+  - debug:
+      var: used_var</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html">Ansible - Variables</a></li></ul>

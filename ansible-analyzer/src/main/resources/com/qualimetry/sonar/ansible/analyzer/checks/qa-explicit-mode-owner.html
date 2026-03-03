@@ -1,0 +1,20 @@
+<p>When creating or copying files, implicit default mode or ownership can differ across systems. Set mode and owner/group explicitly so the result is consistent and auditable.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You use copy, file, or template without setting mode or owner/group where security or consistency matters.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Set mode (e.g. 0644, 0755) and owner/group on file operations when the target state is important. Use variables for reuse.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Copy file
+  copy:
+    src: app.conf
+    dest: /etc/app.conf</pre>
+<h2>Compliant</h2>
+<pre>- name: Copy file
+  copy:
+    src: app.conf
+    dest: /etc/app.conf
+    mode: 0644
+    owner: root
+    group: root</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html">Ansible - copy module</a></li></ul>

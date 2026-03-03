@@ -1,0 +1,5 @@
+# Noncompliant :file
+- hosts: all
+  tasks:
+    - name: Ping
+      ping:

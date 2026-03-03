@@ -1,0 +1,7 @@
+# Line exceeding 160 chars
+- hosts: all
+  tasks:
+    - name: Long line
+      debug:
+# Noncompliant
+        msg: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"

@@ -1,0 +1,6 @@
+# Deprecated include
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Include
+      include: other.yml

@@ -1,0 +1,5 @@
+# Compliant playbook (no violations for default rules)
+- hosts: all
+  tasks:
+    - name: Ping hosts
+      ping:

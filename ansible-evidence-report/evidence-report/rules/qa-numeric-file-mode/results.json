@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-numeric-file-mode",
+  "displayName": "Qa Numeric File Mode",
+  "severity": "MINOR",
+  "defaultActive": false,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":5}],
+      "actualIssues": [{"line":5,"message":"Use numeric mode (e.g. 0755) or explicit octal string to avoid misinterpretation."}],
+      "mismatches": []
+    }
+  ]
+}

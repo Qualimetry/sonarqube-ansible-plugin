@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-bare-var-in-condition",
+  "displayName": "Qa Bare Var In Condition",
+  "severity": "MINOR",
+  "defaultActive": true,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":5}],
+      "actualIssues": [{"line":5,"message":"Use the bare variable in \"when\" (e.g. when: var) instead of when: \"{{ var }}\"."}],
+      "mismatches": []
+    }
+  ]
+}

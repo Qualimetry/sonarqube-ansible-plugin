@@ -1,0 +1,16 @@
+{
+  "ruleKey": "qa-role-meta-video-links",
+  "displayName": "Qa Role Meta Video Links",
+  "severity": "MINOR",
+  "defaultActive": false,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "default-compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    }
+  ]
+}

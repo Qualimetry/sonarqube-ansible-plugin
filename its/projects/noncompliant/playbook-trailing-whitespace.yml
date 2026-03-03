@@ -1,0 +1,8 @@
+# Violates no-trailing-whitespace (space after "all" on line 2, after "tasks" on 3)
+- hosts: all  
+  tasks:  
+    - name: Ping
+      ping:
+    - name: Deploy file
+      copy:
+        dest: /tmp/foo

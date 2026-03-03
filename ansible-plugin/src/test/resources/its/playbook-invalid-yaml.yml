@@ -1,0 +1,5 @@
+# Invalid YAML: unclosed quote
+- hosts: all
+  tasks:
+  - name: Bad
+    copy: "src=foo

@@ -1,0 +1,21 @@
+<p>Deprecated module parameters may be removed in future Ansible. Check module docs and use the recommended parameter so playbooks stay compatible.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You use parameters marked deprecated in the module docs.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Replace deprecated parameters with the suggested alternative from the docs.</li></ul>
+<h2>Noncompliant</h2>
+<pre>
+- name: Copy file
+  copy:
+    src: a.conf
+    dest: /etc/a.conf
+    force: yes
+</pre>
+<h2>Compliant</h2>
+<pre>
+- name: Copy file
+  copy:
+    src: a.conf
+    dest: /etc/a.conf
+    state: present
+</pre>

@@ -1,0 +1,7 @@
+# ignore_errors: true
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: May fail
+      command: /bin/false
+      ignore_errors: true

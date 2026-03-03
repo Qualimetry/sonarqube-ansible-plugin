@@ -1,0 +1,36 @@
+<p>Logging task output that contains passwords, API keys, or other secrets exposes them to anyone with access to Ansible output, CI logs, or syslog. That can lead to credential theft and privilege escalation.</p>
+<p>The <code>no_log</code> task parameter controls whether the task's arguments and return values are recorded. When <code>no_log</code> is omitted or <code>false</code>, Ansible may log module arguments and results that include sensitive data.</p>
+<p>Anyone who can read job logs or playbook output may reuse those credentials. You should set <code>no_log: true</code> for any task that uses or returns secrets.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>This task uses a password, token, API key, or other secret.</li>
+  <li>Playbook or job output is visible to people who should not see those values.</li>
+  <li>Logs are stored in a system that is not fully restricted (e.g. shared CI).</li>
+</ul>
+
+<h3>Recommended secure coding practices</h3>
+<ul>
+  <li>Set <code>no_log: true</code> on every task that passes or returns sensitive data.</li>
+  <li>Use Ansible Vault (or a secrets manager) for variables that hold secrets.</li>
+  <li>Avoid passing secrets on the command line; use module parameters or environment variables with <code>no_log: true</code>.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- name: Set password
+  user:
+    name: foo
+    password: "{{ secret }}"</pre>
+
+<h2>Compliant</h2>
+<pre>- name: Set password
+  user:
+    name: foo
+    password: "{{ secret }}"
+  no_log: true</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html">Ansible - Special Variables (no_log)</a></li>
+  <li><a href="https://cwe.mitre.org/data/definitions/532.html">CWE-532 - Insertion of Sensitive Information into Log File</a></li>
+</ul>

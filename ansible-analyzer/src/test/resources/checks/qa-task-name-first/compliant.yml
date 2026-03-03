@@ -1,0 +1,7 @@
+# Compliant: name before module key
+- hosts: all
+  tasks:
+    - name: Copy file
+      copy:
+        src: a
+        dest: /tmp

@@ -1,0 +1,17 @@
+<p>Comparing a variable to an empty string (e.g. when: my_var == "") is fragile: the variable might be undefined or a different type. Prefer checking length or presence (e.g. when: my_var | length > 0 or when: my_var is defined and my_var) so the condition is clear and safe.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You use == "" or != "" in when conditions or elsewhere.</li><li>The variable might be undefined or a list.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Use when: my_var | length > 0 for non-empty string, or when: my_var is defined and my_var for truthy check. Use when: my_list | length > 0 for lists.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Run when not empty
+  debug:
+    msg: "{{ my_var }}"
+  when: my_var != ""</pre>
+<h2>Compliant</h2>
+<pre>- name: Run when not empty
+  debug:
+    msg: "{{ my_var }}"
+  when: my_var is defined and my_var | length > 0</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_conditionals.html">Ansible - Conditionals</a></li></ul>

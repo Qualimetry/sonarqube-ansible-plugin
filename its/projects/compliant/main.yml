@@ -1,0 +1,26 @@
+# Compliant tasks - Qualimetry Way
+---
+- name: Ping hosts
+  ansible.builtin.ping:
+
+- name: Ensure user exists
+  ansible.builtin.user:
+    name: appuser
+    state: present
+    create_home: true
+
+- name: Deploy template
+  ansible.builtin.template:
+    src: "{{ playbook_dir }}/templates/app.conf.j2"
+    dest: /etc/app/app.conf
+    mode: 0644
+    owner: root
+    group: root
+
+- name: Create log directory
+  ansible.builtin.file:
+    path: /var/log/app
+    state: directory
+    mode: 0750
+    owner: appuser
+    group: appuser

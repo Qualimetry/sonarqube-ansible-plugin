@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-no-log-secrets",
+  "displayName": "Qa No Log Secrets",
+  "severity": "MINOR",
+  "defaultActive": false,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":5}],
+      "actualIssues": [{"line":5,"message":"Set \"no_log: true\" when the task handles passwords or secrets."}],
+      "mismatches": []
+    }
+  ]
+}

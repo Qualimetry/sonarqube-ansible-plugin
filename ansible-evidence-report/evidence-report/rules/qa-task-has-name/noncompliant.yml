@@ -1,0 +1,5 @@
+# Task without name
+- hosts: all
+  tasks:
+# Noncompliant {{Add a "name" to this task.}}
+    - ping:

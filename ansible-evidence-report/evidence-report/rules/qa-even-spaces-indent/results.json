@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-even-spaces-indent",
+  "displayName": "Qa Even Spaces Indent",
+  "severity": "MINOR",
+  "defaultActive": true,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":4}],
+      "actualIssues": [{"line":4,"message":"Use an even number of spaces for indentation (2 or 4)."}],
+      "mismatches": []
+    }
+  ]
+}

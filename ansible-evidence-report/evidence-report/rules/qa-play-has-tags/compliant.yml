@@ -1,0 +1,7 @@
+# Compliant: play with tags
+- hosts: all
+  tags:
+    - deploy
+  tasks:
+    - name: Ping
+      ping:

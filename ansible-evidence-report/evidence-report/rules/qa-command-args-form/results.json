@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-command-args-form",
+  "displayName": "Qa Command Args Form",
+  "severity": "MINOR",
+  "defaultActive": false,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":5}],
+      "actualIssues": [{"line":5,"message":"Use the args form for command (e.g. cmd: \"...\") instead of free-form."}],
+      "mismatches": []
+    }
+  ]
+}

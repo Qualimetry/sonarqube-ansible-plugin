@@ -1,0 +1,30 @@
+<p>Very long lines are hard to read and review in standard terminals and editors. They can also make diffs noisier and reduce the effectiveness of side-by-side review.</p>
+<p>A maximum line length (e.g. 160 characters, configurable) encourages breaking long lines or extracting values. Shorter lines improve readability and tool compatibility.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>Lines exceed the width of your editor or terminal without wrapping.</li>
+  <li>Long task names or module arguments could be shortened or split.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Keep lines under a reasonable limit (e.g. 120–160 characters).</li>
+  <li>Use YAML multiline syntax (<code>|</code> or <code>&gt;</code>) for long strings.</li>
+  <li>Break long lists or arguments across lines where it improves clarity.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- name: A very long task name or line that exceeds the recommended maximum line length and makes the playbook harder to read and review in standard terminals and editors
+  debug:
+    msg: "ok"</pre>
+
+<h2>Compliant</h2>
+<pre>- name: Short task name
+  debug:
+    msg: "ok"</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li>Project or team style guide for line length</li>
+</ul>

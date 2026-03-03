@@ -1,0 +1,6 @@
+# shell with pipe
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Grep
+      shell: grep foo /etc/hosts | head -1

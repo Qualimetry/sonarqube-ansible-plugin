@@ -1,0 +1,27 @@
+<p>When a task uses notify, a handler with that name must be defined (e.g. in handlers/main.yml). If the handler is missing, Ansible will report an error at the end of the play. Define the handler so notified actions run correctly.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You use notify: Some name in a task.</li><li>A handler with that exact name exists in the play or role.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Define each notified name as a handler in the handlers section. Use descriptive handler names (e.g. Restart nginx) and match them exactly in notify.</li></ul>
+<h2>Noncompliant</h2>
+<pre>tasks:
+  - name: Edit config
+    template:
+      src: a.conf.j2
+      dest: /etc/a.conf
+    notify: Restart app
+# No handler named "Restart app" defined</pre>
+<h2>Compliant</h2>
+<pre>tasks:
+  - name: Edit config
+    template:
+      src: a.conf.j2
+      dest: /etc/a.conf
+    notify: Restart app
+handlers:
+  - name: Restart app
+    service:
+      name: app
+      state: restarted</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_handlers.html">Ansible - Handlers</a></li></ul>

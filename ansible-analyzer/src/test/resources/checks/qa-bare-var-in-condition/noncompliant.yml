@@ -1,0 +1,7 @@
+# when with {{ var }}
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Run when
+      ping:
+      when: "{{ my_var }}"

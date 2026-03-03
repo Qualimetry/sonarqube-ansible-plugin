@@ -1,0 +1,16 @@
+<p>Restricting to ansible.builtin modules reduces dependency on external collections and keeps playbooks portable. Use built-in modules when they can do the job; use other collections only when needed.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You use modules from community or other collections where a builtin exists.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Prefer ansible.builtin.* when the functionality exists. Use FQCN and document when you require a non-builtin collection.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Use community module
+  community.general.aws_s3:
+    bucket: my-bucket</pre>
+<h2>Compliant</h2>
+<pre>- name: Use builtin
+  ansible.builtin.copy:
+    src: a
+    dest: /tmp/a</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/index.html">Ansible - Builtin collection</a></li></ul>

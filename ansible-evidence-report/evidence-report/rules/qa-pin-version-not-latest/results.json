@@ -1,0 +1,16 @@
+{
+  "ruleKey": "qa-pin-version-not-latest",
+  "displayName": "Qa Pin Version Not Latest",
+  "severity": "MINOR",
+  "defaultActive": false,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "default-compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    }
+  ]
+}

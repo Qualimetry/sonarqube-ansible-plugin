@@ -1,0 +1,5 @@
+# Compliant: lowercase var name
+- hosts: all
+  tasks:
+    - set_fact:
+        my_var: value

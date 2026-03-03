@@ -1,0 +1,7 @@
+# command without changed_when
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Run
+      command:
+        cmd: echo hi

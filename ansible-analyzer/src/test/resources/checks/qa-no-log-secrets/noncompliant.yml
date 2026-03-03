@@ -1,0 +1,8 @@
+# password without no_log
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Set password
+      user:
+        name: foo
+        password: "{{ secret }}"

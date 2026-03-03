@@ -1,0 +1,15 @@
+# Mix: deprecated local_action, bare var in when
+- hosts: all
+  tasks:
+    - name: Old local action
+      local_action:
+        module: copy
+        src: a
+        dest: /tmp/a
+    - name: Bare var in when
+      debug:
+        msg: "{{ item }}"
+      when: myvar
+      loop:
+        - one
+        - two

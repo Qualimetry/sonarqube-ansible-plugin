@@ -1,0 +1,16 @@
+{
+  "ruleKey": "qa-env-block-not-inline",
+  "displayName": "Qa Env Block Not Inline",
+  "severity": "MINOR",
+  "defaultActive": false,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "default-compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    }
+  ]
+}

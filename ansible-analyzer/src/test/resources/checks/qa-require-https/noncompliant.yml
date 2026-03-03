@@ -1,0 +1,8 @@
+# HTTP URL
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Fetch
+      get_url:
+        url: http://example.com/file
+        dest: /tmp/file

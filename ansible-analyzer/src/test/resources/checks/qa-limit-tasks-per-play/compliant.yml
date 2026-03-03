@@ -1,0 +1,5 @@
+# Compliant: play with few tasks (under limit 50)
+- hosts: all
+  tasks:
+    - name: Ping
+      ping:

@@ -1,0 +1,26 @@
+<p>Tasks with too many attributes (keys) are hard to read and maintain. A configurable limit encourages splitting into multiple tasks or using variables and blocks so each task has a clear, focused purpose.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>This task has many keys (name, module, when, loop, vars, register, etc.) that could be simplified.</li><li>You want to improve readability and reuse.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Extract repeated or complex values into variables. Use block for grouping instead of repeating the same attributes. Set a project-specific attribute limit.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Complex task
+  copy:
+    src: a
+    dest: /tmp/a
+  when: x
+  loop: items
+  vars:
+    a: 1
+  register: out
+  changed_when: true
+  failed_when: false
+  # ... many more keys</pre>
+<h2>Compliant</h2>
+<pre>- name: Copy file
+  copy:
+    src: a
+    dest: /tmp/a
+  when: deploy_enabled</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html">Ansible - Intro to playbooks</a></li></ul>

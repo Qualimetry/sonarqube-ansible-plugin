@@ -1,0 +1,15 @@
+<p>Parser errors (invalid YAML or Ansible structure) prevent the file from being loaded and analyzed. Fix the reported error (e.g. indentation, unclosed bracket, invalid key) so the playbook can run and the analyzer can check the rest of the file.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>The file has syntax or structural errors reported by the parser.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Check the reported line and context. Use consistent indentation (spaces only), quote special characters, and close brackets and quotes. Run ansible-playbook --syntax-check.</li></ul>
+<h2>Noncompliant</h2>
+<pre># File with parse error (e.g. bad indent, unclosed [)</pre>
+<h2>Compliant</h2>
+<pre>- hosts: all
+  tasks:
+    - name: Valid task
+      debug:
+        msg: ok</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html">Ansible - YAML Syntax</a></li></ul>

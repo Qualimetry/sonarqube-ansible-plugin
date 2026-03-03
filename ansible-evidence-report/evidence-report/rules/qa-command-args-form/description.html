@@ -1,0 +1,32 @@
+<p>Using the free-form style for <code>command</code> or <code>shell</code> (a single string after the module name) makes it harder to pass arguments safely and to see exactly what will run. It also encourages string concatenation and can lead to quoting or injection issues.</p>
+<p>Ansible allows either <code>command: echo hello</code> (free-form) or the args form with a list or named arguments (e.g. <code>command:</code> then <code>cmd: echo hello</code> or <code>argv: ["echo", "hello"]</code>). The args form makes the boundary between the executable and its arguments explicit and avoids ambiguity when variables or special characters are involved.</p>
+<p>Using the args form improves consistency, auditability, and safety. Prefer the args form for <code>command</code> and <code>shell</code> tasks.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>The task uses variables or user input in the command string (injection or quoting risk).</li>
+  <li>You want playbook reviews and logs to show exactly which arguments are passed.</li>
+  <li>Your style guide or automation standards require explicit argument lists.</li>
+</ul>
+
+<h3>Recommended secure coding practices</h3>
+<ul>
+  <li>Use the args form: put the command and arguments under <code>cmd</code> (or <code>argv</code>) instead of a single free-form string.</li>
+  <li>Prefer the <code>ansible.builtin.command</code> or <code>ansible.builtin.shell</code> FQCN and pass arguments as a list where possible to avoid shell parsing issues.</li>
+  <li>When you need shell features (pipes, redirects), use <code>shell</code> with the args form and consider <code>args</code> (e.g. <code>executable: /bin/bash</code>) if required.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- name: Run something
+  command: echo hello</pre>
+
+<h2>Compliant</h2>
+<pre>- name: Run something
+  command:
+    cmd: echo hello</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/command_module.html">Ansible - command module</a></li>
+  <li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html">Ansible - shell module</a></li>
+</ul>

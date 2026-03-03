@@ -1,0 +1,16 @@
+{
+  "ruleKey": "qa-role-meta-format",
+  "displayName": "Qa Role Meta Format",
+  "severity": "MINOR",
+  "defaultActive": false,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "default-compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    }
+  ]
+}

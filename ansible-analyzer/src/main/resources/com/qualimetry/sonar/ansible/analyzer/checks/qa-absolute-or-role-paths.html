@@ -1,0 +1,18 @@
+<p>Relative paths in module arguments (e.g. <code>src</code>, <code>file</code>) are resolved from the current working directory, which can differ depending on how the playbook is run. That leads to "file not found" or using the wrong file when run from another directory or from CI.</p>
+<p>Use absolute paths or role-relative paths (e.g. <code>{{ role_path }}/files/...</code>) so behavior is consistent regardless of where the playbook is executed from.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You use relative paths like <code>files/config.yml</code> or <code>../templates/app.conf</code> in src, file, or similar arguments.</li><li>Playbooks are run from different working directories (e.g. project root vs role directory).</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>For role content, use <code>{{ role_path }}/files/...</code> or <code>{{ role_path }}/templates/...</code>. For playbook-relative paths, use a variable or absolute path.</li><li>Avoid paths that depend on the current working directory.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Copy from relative path
+  copy:
+    src: files/app.conf
+    dest: /etc/app.conf</pre>
+<h2>Compliant</h2>
+<pre>- name: Copy from role path
+  copy:
+    src: "{{ role_path }}/files/app.conf"
+    dest: /etc/app.conf</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/playbook_guide/playbook_pathing.html">Ansible - Search paths in Ansible</a></li></ul>

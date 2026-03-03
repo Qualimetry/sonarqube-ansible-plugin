@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-shell-pipe-safe",
+  "displayName": "Qa Shell Pipe Safe",
+  "severity": "MINOR",
+  "defaultActive": true,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":5}],
+      "actualIssues": [{"line":5,"message":"Shell commands with pipes may fail silently; consider set -o pipefail or splitting into separate tasks."}],
+      "mismatches": []
+    }
+  ]
+}

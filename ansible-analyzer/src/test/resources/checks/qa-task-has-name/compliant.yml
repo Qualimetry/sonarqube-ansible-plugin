@@ -1,0 +1,5 @@
+# Compliant: task has name
+- hosts: all
+  tasks:
+    - name: Ping host
+      ping:

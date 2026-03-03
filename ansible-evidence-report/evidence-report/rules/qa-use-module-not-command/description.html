@@ -1,0 +1,29 @@
+<p>Using an Ansible module instead of <code>command</code> or <code>shell</code> when a module exists gives you idempotency, clearer change reporting, and better portability. Raw commands (e.g. <code>cp</code>, <code>chown</code>) are not idempotent and can cause repeated "changed" or inconsistent state.</p>
+<p>Modules like <code>copy</code>, <code>file</code>, <code>package</code>, and <code>user</code> are designed for declarative, repeatable tasks. They check current state and only report "changed" when something actually changes. Prefer them over wrapping system commands.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>An Ansible module can perform the same operation (copy, install, user management, etc.).</li>
+  <li>You want the task to be idempotent and to report changes accurately.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Search the module index for the operation (e.g. copy file, install package) and use that module.</li>
+  <li>Use <code>command</code> or <code>shell</code> only when no module fits or when you need a one-off script.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- name: Copy file
+  command: cp /tmp/a.conf /etc/a.conf</pre>
+
+<h2>Compliant</h2>
+<pre>- name: Copy file
+  copy:
+    src: /tmp/a.conf
+    dest: /etc/a.conf</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/collections/index.html">Ansible - Module index</a></li>
+</ul>

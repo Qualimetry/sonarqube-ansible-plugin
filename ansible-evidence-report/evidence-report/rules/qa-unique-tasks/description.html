@@ -1,0 +1,24 @@
+<p>Duplicate tasks (same name and module) in a play are redundant and can cause double execution or confusion. Consolidate them into a single task (e.g. with a list argument) or give them distinct names and purposes.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You have multiple tasks with the same name and module that could be merged.</li><li>You intended to run one task but copied it by mistake.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Use a single task with a list (e.g. name: [foo, bar]) when the operation is the same. Use distinct names when the tasks are logically different.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- hosts: all
+  tasks:
+    - name: Install package
+      apt:
+        name: foo
+    - name: Install package
+      apt:
+        name: bar</pre>
+<h2>Compliant</h2>
+<pre>- hosts: all
+  tasks:
+    - name: Install packages
+      apt:
+        name:
+          - foo
+          - bar</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html">Ansible - Intro to playbooks</a></li></ul>
