@@ -1,0 +1,35 @@
+<p>Overly permissive file modes (e.g. 0777 or 0666) allow any user to read, write, or execute files. That can lead to privilege escalation, data tampering, or execution of malicious code.</p>
+<p>When you set <code>mode</code> on <code>copy</code>, <code>file</code>, or <code>template</code>, avoid world-writable or world-executable bits unless there is a documented reason. Restrict files to the owner and optionally group.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>This file contains secrets, binaries, or configuration that should not be writable by others.</li>
+  <li>The mode includes 2 (write) or 1 (execute) for "other" (e.g. 0777, 0666).</li>
+</ul>
+
+<h3>Recommended secure coding practices</h3>
+<ul>
+  <li>Use modes such as 0644 (file) or 0755 (executable) instead of 0777 or 0666.</li>
+  <li>Set <code>owner</code> and <code>group</code> explicitly when possible.</li>
+  <li>Document any exception where broad permissions are required.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- name: Copy file
+  copy:
+    src: app.sh
+    dest: /tmp/app.sh
+    mode: 0777</pre>
+
+<h2>Compliant</h2>
+<pre>- name: Copy file
+  copy:
+    src: app.sh
+    dest: /tmp/app.sh
+    mode: 0755</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://cwe.mitre.org/data/definitions/732.html">CWE-732 - Incorrect Permission Assignment for Critical Resource</a></li>
+  <li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html">Ansible - copy module</a></li>
+</ul>

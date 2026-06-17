@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-restrict-file-mode",
+  "displayName": "Qa Restrict File Mode",
+  "severity": "MINOR",
+  "defaultActive": false,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":5}],
+      "actualIssues": [{"line":5,"message":"Avoid overly permissive file mode (e.g. 0777, 0666)."}],
+      "mismatches": []
+    }
+  ]
+}

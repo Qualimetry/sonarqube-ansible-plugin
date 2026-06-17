@@ -1,0 +1,18 @@
+<p>Tasks that prompt for user input (vars_prompt or modules that wait for stdin) block execution and fail or hang when playbooks run non-interactively (CI, cron). Use extra vars, environment variables, or a secrets manager instead.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>This playbook runs in CI or without a TTY.</li><li>You need to pass secrets; use a secure, non-interactive method.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Do not use vars_prompt for unattended runs. Use -e, environment variables, or vault files.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- hosts: all
+  vars_prompt:
+    - name: db_password
+      prompt: Database password</pre>
+<h2>Compliant</h2>
+<pre>- hosts: all
+  tasks:
+    - name: Use password from env
+      set_fact:
+        db_password: "{{ lookup('env', 'DB_PASSWORD') }}"</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_prompts.html">Ansible - Prompts</a></li></ul>

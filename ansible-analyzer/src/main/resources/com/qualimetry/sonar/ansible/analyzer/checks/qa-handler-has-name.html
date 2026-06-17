@@ -1,0 +1,18 @@
+<p>Handlers should have a name so they can be identified in run output and when using notify. Unnamed handlers show only the module name, which makes debugging and auditing harder.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>Someone will need to see which handler ran from logs or output.</li><li>You use notify with handler names and want them to be descriptive.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Add a short, descriptive name to each handler. Place name first, as with tasks.</li></ul>
+<h2>Noncompliant</h2>
+<pre>handlers:
+  - service:
+      name: nginx
+      state: restarted</pre>
+<h2>Compliant</h2>
+<pre>handlers:
+  - name: Restart nginx
+    service:
+      name: nginx
+      state: restarted</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_handlers.html">Ansible - Handlers</a></li></ul>

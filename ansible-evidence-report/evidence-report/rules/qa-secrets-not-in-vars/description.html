@@ -1,0 +1,34 @@
+<p>Storing secrets in plain variable files (e.g. <code>vars/main.yml</code>, <code>group_vars</code>, or defaults) exposes them to anyone with access to the repository or the files on disk. Those files are often committed to version control or copied to servers, so credentials can be leaked and reused.</p>
+<p>Variables in role or playbook vars are loaded as plain YAML. There is no built-in encryption, so passwords, API keys, and tokens stored there are visible in source code, backups, and any artifact that includes those files.</p>
+<p>Use a secure mechanism for secrets: Ansible Vault for encrypted vars, or a secrets manager (e.g. HashiCorp Vault, cloud provider secrets) that injects values at runtime. Do not store secrets in unencrypted variable files.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>This variable holds a password, token, API key, or other secret.</li>
+  <li>The file or repo is (or could be) accessible to people who should not see the value.</li>
+  <li>Secrets are committed to version control or shipped in plain form.</li>
+</ul>
+
+<h3>Recommended secure coding practices</h3>
+<ul>
+  <li>Store secrets in Ansible Vault–encrypted files and reference them via variables; decrypt only at runtime.</li>
+  <li>Use a secrets manager or CI secrets and pass values into the playbook via environment variables or extra vars that are not committed.</li>
+  <li>Never commit unencrypted secrets to version control; use <code>ansible-vault encrypt</code> for any file that must contain secrets.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre># vars/main.yml
+db_password: "supersecret123"
+api_key: "key-abc"</pre>
+
+<h2>Compliant</h2>
+<pre># Use Ansible Vault for vars that hold secrets (e.g. vars/vault.yml)
+# and pass with: ansible-playbook -e @vault.yml --ask-vault-pass
+# Or use environment variables / CI secrets and pass via -e "db_password={{ lookup('env', 'DB_PASS') }}"</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/vault_guide/index.html">Ansible Vault</a></li>
+  <li><a href="https://cwe.mitre.org/data/definitions/798.html">CWE-798 - Use of Hard-coded Credentials</a></li>
+  <li><a href="https://cwe.mitre.org/data/definitions/522.html">CWE-522 - Insufficiently Protected Credentials</a></li>
+</ul>

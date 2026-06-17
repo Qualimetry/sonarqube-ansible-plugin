@@ -1,0 +1,7 @@
+# Compliant: ansible.builtin
+- hosts: all
+  tasks:
+    - name: Copy
+      ansible.builtin.copy:
+        src: a
+        dest: /tmp/a

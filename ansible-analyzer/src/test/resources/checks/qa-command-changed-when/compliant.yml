@@ -1,0 +1,7 @@
+# Compliant: command with changed_when
+- hosts: all
+  tasks:
+    - name: Run
+      command:
+        cmd: echo hi
+      changed_when: false

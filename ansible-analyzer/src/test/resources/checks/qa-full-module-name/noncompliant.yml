@@ -1,0 +1,8 @@
+# Short module name
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Copy file
+      copy:
+        src: a.conf
+        dest: /etc/a.conf

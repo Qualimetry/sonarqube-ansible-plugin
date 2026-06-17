@@ -1,0 +1,11 @@
+# loop_var without item_ prefix (not default item)
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Loop
+      debug:
+        msg: "{{ x }}"
+      loop:
+        - a
+      loop_control:
+        loop_var: x

@@ -1,0 +1,32 @@
+<p>Role names should follow a consistent format so they work correctly with Galaxy, <code>ansible-galaxy</code>, and role dependencies. Lowercase names with only alphanumeric characters and underscores (and optional FQCN) are the standard.</p>
+<p>Names with dashes or mixed case can cause issues in some contexts. Using <code>role_name</code> or <code>namespace.role_name</code> keeps roles portable and easy to reference.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>Your role name contains dashes, spaces, or uppercase letters.</li>
+  <li>You plan to publish the role to Galaxy or reference it from meta dependencies.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Use lowercase letters, numbers, and underscores (e.g. <code>my_role</code>).</li>
+  <li>For FQCN use the form <code>namespace.role_name</code> (e.g. <code>ansible.builtin</code> or your collection name).</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- hosts: all
+  roles:
+    - MyRole
+    - role-with-dashes</pre>
+
+<h2>Compliant</h2>
+<pre>- hosts: all
+  roles:
+    - my_role
+    - namespace.my_role</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html">Ansible - Roles</a></li>
+  <li><a href="https://galaxy.ansible.com/docs/contributing/creating_role.html">Galaxy - Creating a role</a></li>
+</ul>

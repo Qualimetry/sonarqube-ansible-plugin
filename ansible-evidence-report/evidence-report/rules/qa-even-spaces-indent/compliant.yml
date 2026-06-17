@@ -1,0 +1,5 @@
+# Compliant: two-space indent
+- hosts: all
+  tasks:
+    - name: Ping
+      ping:

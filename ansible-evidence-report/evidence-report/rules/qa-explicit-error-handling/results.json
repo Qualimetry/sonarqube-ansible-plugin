@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-explicit-error-handling",
+  "displayName": "Qa Explicit Error Handling",
+  "severity": "MINOR",
+  "defaultActive": true,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":5}],
+      "actualIssues": [{"line":5,"message":"Avoid \"ignore_errors: yes\"; handle failures explicitly or use failed_when."}],
+      "mismatches": []
+    }
+  ]
+}

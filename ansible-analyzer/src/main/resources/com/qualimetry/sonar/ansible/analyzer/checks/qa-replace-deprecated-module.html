@@ -1,0 +1,34 @@
+<p>Deprecated Ansible modules may be removed in a future release. Using them risks breakage when you upgrade. Replace them with the recommended alternatives so playbooks remain compatible.</p>
+<p>Ansible deprecates modules when a better or consolidated alternative exists (e.g. <code>include</code> vs <code>import_playbook</code> / <code>include_tasks</code>). The documentation for deprecated modules usually states the replacement.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>You use modules that appear as deprecated in the Ansible documentation.</li>
+  <li>You want playbooks to work with future Ansible versions.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Check module docs for deprecation notices and use the suggested replacement.</li>
+  <li>For <code>include</code>: use <code>import_playbook</code> for playbooks and <code>include_tasks</code> or <code>import_tasks</code> for task files.</li>
+  <li>Run playbooks with the latest Ansible and fix deprecation warnings.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- hosts: all
+  tasks:
+    - name: Include playbook
+      include: other.yml</pre>
+
+<h2>Compliant</h2>
+<pre>- hosts: all
+  tasks:
+    - name: Import playbook
+      import_playbook: other.yml</pre>
+
+<p>For including task files, use <code>include_tasks</code> or <code>import_tasks</code> instead of <code>include</code>.</p>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/porting_guides/porting_guide_2.0.html">Ansible - Porting guides</a></li>
+</ul>

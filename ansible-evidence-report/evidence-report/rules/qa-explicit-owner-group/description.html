@@ -1,0 +1,21 @@
+<p>Using <code>same_owner</code> (or equivalent) copies ownership from the source, which may not be what you want on the target and can be inconsistent across environments. Setting <code>owner</code> and <code>group</code> explicitly makes the intended state clear and repeatable.</p>
+<p>Explicit owner and group improve auditability and avoid surprises when source files have different ownership on different systems. They also align with declarative, idempotent configuration.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You use same_owner or rely on default ownership.</li><li>You want consistent, documented ownership on the target.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Set <code>owner</code> and <code>group</code> explicitly on copy, file, or template tasks. Use variables (e.g. from role defaults) when the same value is used in many places.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Copy with same_owner
+  copy:
+    src: a
+    dest: /tmp/a
+    same_owner: true</pre>
+<h2>Compliant</h2>
+<pre>- name: Copy with explicit owner
+  copy:
+    src: a
+    dest: /tmp/a
+    owner: root
+    group: root</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html">Ansible - copy module</a></li></ul>

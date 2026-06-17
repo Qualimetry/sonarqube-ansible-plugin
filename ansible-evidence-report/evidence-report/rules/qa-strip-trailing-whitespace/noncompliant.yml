@@ -1,0 +1,6 @@
+# Violates no-trailing-whitespace (space at end of next line)
+# Noncompliant {{Remove trailing whitespace.}}
+- hosts: all  
+  tasks:
+    - name: Ping
+      ping:

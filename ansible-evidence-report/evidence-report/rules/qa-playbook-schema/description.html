@@ -1,0 +1,16 @@
+<p>The playbook or role file does not match the expected YAML/Ansible structure (e.g. missing hosts, invalid key under tasks). Fix the structure so the file is valid and can be executed.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You have a play with no hosts, or tasks with invalid keys.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Ensure each play has hosts and that task entries have a module or include. Follow Ansible playbook structure (plays, tasks, handlers).</li></ul>
+<h2>Noncompliant</h2>
+<pre>- tasks:
+    - name: Bad
+      debug: {}  # play has no hosts</pre>
+<h2>Compliant</h2>
+<pre>- hosts: all
+  tasks:
+    - name: Ok
+      debug: { msg: ok }</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html">Ansible - Intro to playbooks</a></li></ul>

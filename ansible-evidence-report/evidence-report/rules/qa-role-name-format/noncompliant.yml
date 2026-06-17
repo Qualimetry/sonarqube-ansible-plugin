@@ -1,0 +1,5 @@
+# Role name with capitals
+- hosts: all
+  roles:
+# Noncompliant
+    - MyRole

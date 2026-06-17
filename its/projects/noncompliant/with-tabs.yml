@@ -1,0 +1,5 @@
+# no-tabs violation: tab on line 2
+- hosts: all
+	  tasks:
+  - name: Ping
+    ping:

@@ -1,0 +1,18 @@
+<p>Variables that are referenced but not defined (in vars, vars_files, role defaults, or extra vars) cause runtime errors when the task runs. Define them or pass them (e.g. -e) so the playbook executes correctly.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You reference a variable that might not be set in all contexts (e.g. host vars, group vars).</li><li>You added a new reference but did not add a default or pass the value.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Define variables in role defaults, group_vars, or host_vars. Use default() in templates or when for optional values. Pass required vars via -e or inventory.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Use undefined var
+  debug:
+    msg: "{{ my_undefined_var }}"</pre>
+<h2>Compliant</h2>
+<pre>- name: Use var with default
+  debug:
+    msg: "{{ my_var | default('ok') }}"
+# Or define in vars: or role defaults</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html">Ansible - Variables</a></li></ul>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html">Ansible - Variables</a></li></ul>

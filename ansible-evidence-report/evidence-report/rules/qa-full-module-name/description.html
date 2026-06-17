@@ -1,0 +1,18 @@
+<p>Using fully qualified collection names (FQCN), e.g. ansible.builtin.copy instead of copy, makes it clear which module is used and avoids conflicts when multiple collections provide a module with the same short name.</p>
+<p>Ansible 2.10 and later uses collections. Short names like copy resolve to a default (often ansible.builtin), but that can change with configuration. FQCNs are unambiguous and future-proof.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You use short module names (copy, file) without a collection prefix.</li><li>Your playbooks may run in environments where the default collection differs.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Use FQCNs for built-in modules (ansible.builtin.copy) and for third-party collection modules.</li><li>Use FQCNs in playbooks for clarity even if you set a default collection.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Copy file
+  copy:
+    src: a.conf
+    dest: /etc/a.conf</pre>
+<h2>Compliant</h2>
+<pre>- name: Copy file
+  ansible.builtin.copy:
+    src: a.conf
+    dest: /etc/a.conf</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/collections_using.html">Ansible - Using collections</a></li></ul>

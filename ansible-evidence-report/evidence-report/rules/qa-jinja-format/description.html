@@ -1,0 +1,11 @@
+<p>Jinja2 expressions (e.g. {{ var }}, {% if %}) must be well-formed. Invalid or inconsistent spacing can change how the expression is parsed or rendered. Fix the expression so it is valid and matches project style (e.g. spacing around {{ }}).</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You have {{ var }} or {% %} with wrong spacing or invalid syntax.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Use consistent spacing (e.g. {{ var }}). Avoid redundant Jinja in when/loop (use bare variables when appropriate).</li></ul>
+<h2>Noncompliant</h2>
+<pre>msg: "{{var}}"  # or invalid {{ }}</pre>
+<h2>Compliant</h2>
+<pre>msg: "{{ var }}"</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://jinja.palletsprojects.com/">Jinja2 documentation</a></li></ul>

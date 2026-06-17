@@ -1,0 +1,33 @@
+se have<p>Using a string for the file <code>mode</code> (e.g. <code>"0777"</code>) can be misinterpreted: some versions or modules may treat it as a decimal or handle leading zeros differently. Use a numeric literal or an explicit format to avoid confusion and security mistakes.</p>
+<p>In YAML, <code>0777</code> (unquoted) is parsed as octal. Quoting it as <code>"0777"</code> makes it a string and behavior can vary. Consistently using numeric octal or a documented string format reduces errors.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>You use a quoted string for <code>mode</code> (e.g. <code>"0755"</code>).</li>
+  <li>You want to avoid ambiguity between octal and decimal interpretation.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Use numeric mode (e.g. <code>0755</code>) so YAML parses it as octal.</li>
+  <li>If you must use a string, ensure the module documentation supports it and use a consistent format.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- name: Copy file
+  copy:
+    src: a
+    dest: /tmp/a
+    mode: "0777"</pre>
+
+<h2>Compliant</h2>
+<pre>- name: Copy file
+  copy:
+    src: a
+    dest: /tmp/a
+    mode: 0755</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html">Ansible - copy module</a></li>
+</ul>

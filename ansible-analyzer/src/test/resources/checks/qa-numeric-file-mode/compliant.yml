@@ -1,0 +1,8 @@
+# Compliant: decimal mode
+- hosts: all
+  tasks:
+    - name: Copy
+      copy:
+        src: a
+        dest: /tmp/a
+        mode: 420

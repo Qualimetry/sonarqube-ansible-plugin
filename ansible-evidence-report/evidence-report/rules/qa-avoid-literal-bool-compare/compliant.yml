@@ -1,0 +1,6 @@
+# Compliant: when without literal compare
+- hosts: all
+  tasks:
+    - name: Run
+      ping:
+      when: my_var

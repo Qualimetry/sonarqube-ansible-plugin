@@ -1,0 +1,7 @@
+# become_user without become
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Do it
+      ping:
+      become_user: root

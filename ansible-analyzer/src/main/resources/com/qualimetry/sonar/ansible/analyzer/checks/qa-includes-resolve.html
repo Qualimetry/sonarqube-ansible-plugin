@@ -1,0 +1,13 @@
+<p>Include or import tasks (include_tasks, import_tasks, import_playbook) reference file paths. If the path does not exist or is not inside the project, the playbook will fail at runtime. Resolve paths so they point to existing files within the project or document the expected layout.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You use include_tasks, import_tasks, or import_playbook with a path that might be missing.</li><li>Paths are relative to the playbook or role and the expected directory structure is in place.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Use paths relative to the role (e.g. tasks/main.yml) or playbook directory. Ensure the referenced files exist and are committed. Use role_path for role-internal includes.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Include missing file
+  include_tasks: tasks/nonexistent.yml</pre>
+<h2>Compliant</h2>
+<pre>- name: Include existing file
+  include_tasks: tasks/setup.yml</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/import_tasks_module.html">Ansible - import_tasks</a></li></ul>

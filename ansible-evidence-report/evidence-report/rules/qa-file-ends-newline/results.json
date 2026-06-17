@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-file-ends-newline",
+  "displayName": "Qa File Ends Newline",
+  "severity": "MINOR",
+  "defaultActive": true,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":0}],
+      "actualIssues": [{"line":0,"message":"Add a newline at the end of this file."}],
+      "mismatches": []
+    }
+  ]
+}
