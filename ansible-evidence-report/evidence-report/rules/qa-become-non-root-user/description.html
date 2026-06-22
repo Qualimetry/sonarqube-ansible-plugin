@@ -1,0 +1,22 @@
+<p>Running tasks as root (become_user: root) increases the impact of mistakes or compromise. Use a dedicated non-root user for least privilege so that a successful attack or bug has limited scope.</p>
+<p>When become_user is root, any vulnerability in the task or module can lead to full system compromise. A non-root user with only the required permissions reduces that risk.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>This task must run as root, or could run as a user with limited privileges.</li><li>Your security or compliance policy requires avoiding root where possible.</li></ul>
+<h3>Recommended secure coding practices</h3>
+<ul><li>Create and use a dedicated user (e.g. appuser, svc_myapp) with only the permissions the task needs.</li><li>Set become_user to that user instead of root. Use become: true and limit sudo or equivalent to specific commands if needed.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Run as root
+  copy:
+    src: app
+    dest: /opt/app
+  become: true
+  become_user: root</pre>
+<h2>Compliant</h2>
+<pre>- name: Run as app user
+  copy:
+    src: app
+    dest: /opt/app
+  become: true
+  become_user: appuser</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/become.html">Ansible - Privilege escalation</a></li><li><a href="https://cwe.mitre.org/data/definitions/250.html">CWE-250 - Execution with Unnecessary Privileges</a></li></ul>

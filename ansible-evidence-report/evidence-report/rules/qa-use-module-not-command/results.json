@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-use-module-not-command",
+  "displayName": "Qa Use Module Not Command",
+  "severity": "MINOR",
+  "defaultActive": false,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":5}],
+      "actualIssues": [{"line":5,"message":"Prefer the copy module instead of command: cp ...."}],
+      "mismatches": []
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+# shell for simple command
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Echo
+      shell: echo hello

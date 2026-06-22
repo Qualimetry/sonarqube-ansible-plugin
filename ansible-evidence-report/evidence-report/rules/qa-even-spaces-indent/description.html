@@ -1,0 +1,30 @@
+<p>Inconsistent indentation (e.g. mixing 2 and 4 spaces, or using an odd number of spaces) can cause YAML parse errors or subtle structural mistakes. YAML uses indentation to denote nesting; it must be consistent within a file.</p>
+<p>Ansible and YAML parsers expect the same indent width throughout. Mixing widths or using odd values (e.g. 3 spaces) is error-prone and can break parsing or produce unexpected structure.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>Different parts of the file use different indent widths.</li>
+  <li>You use an odd number of spaces (e.g. 3) for indentation.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Use either 2 or 4 spaces for each indent level, consistently.</li>
+  <li>Configure your editor to use a fixed indent size and avoid mixing tabs and spaces.</li>
+  <li>Use a formatter that normalizes indentation.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- hosts: all
+   tasks:   # odd number of spaces</pre>
+
+<h2>Compliant</h2>
+<pre>- hosts: all
+  tasks:
+    - name: Ping
+      ping:</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://yaml.org/spec/1.2/spec.html#id2777534">YAML - Indentation</a></li>
+</ul>

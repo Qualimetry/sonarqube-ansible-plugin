@@ -1,0 +1,25 @@
+# Changelog
+
+## [Unreleased]
+
+- (None.)
+
+## [3.2.14] - 2026-06-23
+
+- Renamed the rules repository to "Qualimetry" so SonarQube no longer shows the language label twice.
+
+## [3.2.13] - 2026-06-17
+
+- Added full-text, per-rule documentation pages for every rule.
+
+## [3.2.6] - 2026-02-28
+
+- Minor text and documentation updates.
+
+## [3.2.5] - 2026-02-22
+
+First public release.
+
+- Static analysis of Ansible playbooks and task files in SonarQube.
+- Rule repository **qualimetry-ansible** with quality profiles (e.g. Qualimetry Ansible, Qualimetry Way).
+- Rules for YAML syntax, naming, safety, and best practices (FQCN, no bare vars, key order, line length, and more).

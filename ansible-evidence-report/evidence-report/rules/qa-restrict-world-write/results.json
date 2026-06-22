@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-restrict-world-write",
+  "displayName": "Qa Restrict World Write",
+  "severity": "MINOR",
+  "defaultActive": false,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":5}],
+      "actualIssues": [{"line":5,"message":"Avoid world-writable file mode (e.g. 0o002, 0o022)."}],
+      "mismatches": []
+    }
+  ]
+}

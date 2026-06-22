@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-valid-yaml",
+  "displayName": "Qa Valid Yaml",
+  "severity": "MINOR",
+  "defaultActive": true,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "FILE_LEVEL_CHECK",
+      "expectedIssues": [{"line":6}],
+      "actualIssues": [{"line":7,"message":"while scanning a quoted scalar\n in 'reader', line 6, column 11:\n        copy: \"src=foo\n              ^\nfound unexpected end of stream\n in 'reader', line 7, column 1:\n    \n    ^\n"}],
+      "mismatches": ["Line 6: expected 1 issue(s) but found none.","Line 7: unexpected issue: while scanning a quoted scalar\n in 'reader', line 6, column 11:\n        copy: \"src=foo\n              ^\nfound unexpected end of stream\n in 'reader', line 7, column 1:\n    \n    ^\n"]
+    }
+  ]
+}

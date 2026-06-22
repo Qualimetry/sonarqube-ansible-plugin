@@ -1,0 +1,23 @@
+{
+  "ruleKey": "qa-become-non-root-user",
+  "displayName": "Qa Become Non Root User",
+  "severity": "MINOR",
+  "defaultActive": false,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    },
+    {
+      "name": "noncompliant.yml",
+      "status": "PASS",
+      "expectedIssues": [{"line":5}],
+      "actualIssues": [{"line":5,"message":"Prefer a dedicated non-root user with become_user instead of root."}],
+      "mismatches": []
+    }
+  ]
+}

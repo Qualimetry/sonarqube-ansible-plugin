@@ -1,0 +1,8 @@
+# Compliant: password with no_log
+- hosts: all
+  tasks:
+    - name: Set password
+      user:
+        name: foo
+        password: "{{ secret }}"
+      no_log: true

@@ -1,0 +1,5 @@
+# Compliant: no local_action
+- hosts: all
+  tasks:
+    - name: Ping
+      ping:

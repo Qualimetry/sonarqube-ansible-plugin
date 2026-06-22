@@ -1,0 +1,16 @@
+{
+  "ruleKey": "qa-block-task-limit",
+  "displayName": "Qa Block Task Limit",
+  "severity": "MINOR",
+  "defaultActive": true,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "default-compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    }
+  ]
+}

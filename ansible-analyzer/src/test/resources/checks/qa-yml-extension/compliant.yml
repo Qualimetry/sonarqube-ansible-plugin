@@ -1,0 +1,5 @@
+# Compliant: .yml extension (path is compliant when loaded as fixture)
+- hosts: all
+  tasks:
+    - name: Ping
+      ping:

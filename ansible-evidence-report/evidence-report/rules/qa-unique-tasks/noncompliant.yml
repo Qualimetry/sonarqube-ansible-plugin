@@ -1,0 +1,8 @@
+# Duplicate task (same name and module)
+- hosts: all
+  tasks:
+    - name: Do thing
+      ping:
+# Noncompliant
+    - name: Do thing
+      ping:

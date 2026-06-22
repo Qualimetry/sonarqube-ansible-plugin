@@ -1,0 +1,27 @@
+<p>Task names that are too short (e.g. one or two words with no context) provide little value in run output and logs. A minimum length encourages descriptive names that help with debugging and auditing.</p>
+<p>Meaningful task names make it easier to find failures and understand what each task does without opening the file. Very short names like "Run" or "Copy" add little beyond the module name.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>The task name could be more descriptive (what is being done and for whom or what).</li>
+  <li>Someone reading the log would understand the task from the name alone.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Use task names that describe the action and optionally the target (e.g. "Install nginx package" instead of "Install").</li>
+  <li>Set a minimum length in your style guide or linter and enforce it.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- name: Hi
+  ping:</pre>
+
+<h2>Compliant</h2>
+<pre>- name: Ping the host to verify connectivity
+  ping:</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html">Ansible - Intro to playbooks</a></li>
+</ul>

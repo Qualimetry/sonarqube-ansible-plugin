@@ -1,0 +1,17 @@
+<p>For a when condition that is only a single variable, use the bare variable name, not Jinja {{ var }}. Ansible expands variables in when automatically; using {{ }} can force string evaluation and is redundant.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>Your when condition is just a variable with no comparison or filter.</li><li>You want the condition to be evaluated as a boolean, not as a string.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Use <code>when: my_flag</code> instead of <code>when: "{{ my_flag }}"</code>. For expressions (e.g. <code>var == "yes"</code>), use the expression without wrapping the whole thing in {{ }} when not needed.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Run when flag is set
+  debug:
+    msg: ok
+  when: "{{ my_flag }}"</pre>
+<h2>Compliant</h2>
+<pre>- name: Run when flag is set
+  debug:
+    msg: ok
+  when: my_flag</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/reference_appendices/faq.html#when-should-i-use-var-and-when-var">Ansible FAQ - When to use {{ }}</a></li></ul>

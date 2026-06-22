@@ -1,0 +1,7 @@
+# Compliant: become_user with become: true
+- hosts: all
+  tasks:
+    - name: Do it
+      ping:
+      become: true
+      become_user: root

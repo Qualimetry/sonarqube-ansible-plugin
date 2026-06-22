@@ -1,0 +1,6 @@
+# Free-form command
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: Run
+      command: echo hi

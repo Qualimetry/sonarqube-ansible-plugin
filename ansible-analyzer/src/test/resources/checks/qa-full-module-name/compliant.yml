@@ -1,0 +1,7 @@
+# Compliant: FQCN
+- hosts: all
+  tasks:
+    - name: Copy file
+      ansible.builtin.copy:
+        src: a.conf
+        dest: /etc/a.conf

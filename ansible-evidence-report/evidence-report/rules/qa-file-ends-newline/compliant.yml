@@ -1,0 +1,5 @@
+# Compliant: file ends with newline
+- hosts: all
+  tasks:
+    - name: Ping
+      ping:

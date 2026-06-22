@@ -1,0 +1,31 @@
+<p>For <code>command</code> and <code>shell</code> tasks, Ansible reports "changed" by default whenever the task runs. If the command is not idempotent, that can mislead users and automation. Use <code>changed_when</code> to reflect when a real change occurred.</p>
+<p>Commands that only read state (e.g. echo, checks) should use <code>changed_when: false</code>. Commands that may change state should use a <code>changed_when</code> condition based on output or return code so that "changed" is accurate.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>This command or shell task is idempotent or only reports status.</li>
+  <li>You want "changed" to mean that something actually changed on the host.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Use <code>changed_when: false</code> for read-only or diagnostic commands.</li>
+  <li>Use <code>changed_when</code> with a condition (e.g. on stdout or rc) when the command can change state.</li>
+  <li>Prefer Ansible modules over command/shell when possible for accurate change reporting.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- name: Run command
+  command:
+    cmd: echo hello</pre>
+
+<h2>Compliant</h2>
+<pre>- name: Run command
+  command:
+    cmd: echo hello
+  changed_when: false</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_error_handling.html#defining-changed">Ansible - Error handling (changed_when)</a></li>
+</ul>

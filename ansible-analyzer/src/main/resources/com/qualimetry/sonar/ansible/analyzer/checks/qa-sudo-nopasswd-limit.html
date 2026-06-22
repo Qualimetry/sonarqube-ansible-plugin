@@ -1,0 +1,7 @@
+<p>sudo NOPASSWD allows running commands as root without a password, which increases privilege escalation risk. Restrict NOPASSWD to specific commands and users where possible; avoid broad NOPASSWD for the run user.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>Your playbooks or roles configure sudo with NOPASSWD.</li><li>The scope is broader than necessary (e.g. all commands vs one script).</li></ul>
+<h3>Recommended secure coding practices</h3>
+<ul><li>Limit NOPASSWD to the minimum commands required. Prefer password-based sudo when feasible. Document any NOPASSWD usage.</li></ul>
+<p><strong>See</strong></p>
+<ul><li><a href="https://cwe.mitre.org/data/definitions/250.html">CWE-250 - Execution with Unnecessary Privileges</a></li></ul>

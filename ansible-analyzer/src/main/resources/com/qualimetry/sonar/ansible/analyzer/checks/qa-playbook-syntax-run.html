@@ -1,0 +1,14 @@
+<p>ansible-playbook --syntax-check reports errors when the playbook has structural or syntax issues. Fix the reported error so the playbook can run.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You run --syntax-check and get an error.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Run ansible-playbook --syntax-check before committing. Fix the reported line and context (hosts, tasks, module names, YAML).</li></ul>
+<h2>Noncompliant</h2>
+<pre># File that fails --syntax-check</pre>
+<h2>Compliant</h2>
+<pre>- hosts: all
+  tasks:
+    - name: Valid
+      debug: { msg: ok }</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html">Ansible - Intro to playbooks</a></li></ul>

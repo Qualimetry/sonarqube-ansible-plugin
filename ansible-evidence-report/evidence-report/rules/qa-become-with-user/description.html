@@ -1,0 +1,30 @@
+<p>When <code>become_user</code> is set, <code>become: true</code> (or <code>yes</code>) must also be set. Otherwise <code>become_user</code> has no effect because privilege escalation is not enabled.</p>
+<p>Ansible uses <code>become</code> to enable switching user (e.g. via sudo) and <code>become_user</code> to specify the target user. If only <code>become_user</code> is set, the task may run as the wrong user and the intent is unclear.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>You set <code>become_user</code> to run a task as another user.</li>
+  <li>You expect the task to actually run as that user.</li>
+</ul>
+
+<h3>Recommended practices</h3>
+<ul>
+  <li>Whenever you set <code>become_user</code>, also set <code>become: true</code> (or <code>yes</code>).</li>
+  <li>Prefer setting both at play level when all tasks need the same escalation.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- name: Do something
+  command: echo hi
+  become_user: root</pre>
+
+<h2>Compliant</h2>
+<pre>- name: Do something
+  command: echo hi
+  become: true
+  become_user: root</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/user_guide/become.html">Ansible - Privilege escalation</a></li>
+</ul>

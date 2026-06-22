@@ -1,0 +1,7 @@
+# community module
+- hosts: all
+  tasks:
+# Noncompliant
+    - name: S3
+      community.general.aws_s3:
+        bucket: x

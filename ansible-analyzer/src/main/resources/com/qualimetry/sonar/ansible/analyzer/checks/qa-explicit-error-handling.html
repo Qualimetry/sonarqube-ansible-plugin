@@ -1,0 +1,47 @@
+<p>Using <code>ignore_errors: yes</code> (or <code>true</code>) hides every failure for that task. The play continues as if the task succeeded, so real errors go unnoticed and can cause inconsistent state or broken automation later.</p>
+<p><code>ignore_errors</code> tells Ansible to treat a failed task as successful for the purpose of continuing the play. It does not distinguish between expected and unexpected failures. That makes debugging harder and can mask security or correctness issues (e.g. a failed package install or permission change that you intended to handle explicitly).</p>
+<p>Prefer explicit error handling: use <code>failed_when</code> with a clear condition, or <code>rescue</code> in a block so that only intended cases are ignored and the rest are reported.</p>
+
+<h3>Ask yourself whether</h3>
+<ul>
+  <li>You are using <code>ignore_errors</code> to skip a specific known condition (e.g. "command not found").</li>
+  <li>Failure of this task could leave the system in an inconsistent or insecure state.</li>
+  <li>Other people run or debug this playbook and need to see real failures.</li>
+</ul>
+
+<h3>Recommended secure coding practices</h3>
+<ul>
+  <li>Use <code>failed_when: &lt;condition&gt;</code> so the task fails only when the condition is true, and succeeds otherwise.</li>
+  <li>Use <code>block</code> and <code>rescue</code> to handle expected failures and optionally run cleanup or fallback tasks.</li>
+  <li>If you must use <code>ignore_errors</code>, add a comment explaining why and consider registering the result and checking it in a later task.</li>
+</ul>
+
+<h2>Noncompliant</h2>
+<pre>- name: Maybe fail
+  command: /bin/false
+  ignore_errors: yes</pre>
+
+<h2>Compliant</h2>
+<pre>- name: Run command, fail only when exit code is not 0 or 1
+  command: /some/script
+  register: result
+  failed_when: result.rc not in [0, 1]
+
+# Or use block/rescue for explicit handling:
+- name: Try install, rescue on failure
+  block:
+    - name: Install package
+      ansible.builtin.package:
+        name: mypkg
+        state: present
+  rescue:
+    - name: Log and re-raise
+      ansible.builtin.debug:
+        msg: "Install failed: {{ ansible_failed_result.msg }}"
+      failed_when: true</pre>
+
+<p><strong>See</strong></p>
+<ul>
+  <li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_error_handling.html">Ansible - Error handling in playbooks</a></li>
+  <li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_error_handling.html#defining-failure">Ansible - Error handling (failed_when)</a></li>
+</ul>

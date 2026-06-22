@@ -1,0 +1,16 @@
+{
+  "ruleKey": "qa-runtime-sanity",
+  "displayName": "Qa Runtime Sanity",
+  "severity": "MINOR",
+  "defaultActive": false,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "default-compliant.yml",
+      "status": "FILE_LEVEL_CHECK",
+      "expectedIssues": [],
+      "actualIssues": [{"line":0,"message":"Runtime sanity is not run by this analyzer; use ansible-test sanity locally."}],
+      "mismatches": ["Line 0: unexpected issue: Runtime sanity is not run by this analyzer; use ansible-test sanity locally."]
+    }
+  ]
+}

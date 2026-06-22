@@ -1,0 +1,13 @@
+<p>Role default variables should live in defaults/main.yml so they can be overridden by inventory or playbook vars. Variables in vars/main.yml have higher precedence and are not intended as overridable defaults.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You put default values (that callers might override) in vars/ instead of defaults/.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Use defaults/main.yml for role default values. Use vars/main.yml for role-internal vars that should not be overridden.</li></ul>
+<h2>Noncompliant</h2>
+<pre># vars/main.yml
+app_port: 8080  # intended as default</pre>
+<h2>Compliant</h2>
+<pre># defaults/main.yml
+app_port: 8080</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence">Ansible - Variable precedence</a></li></ul>

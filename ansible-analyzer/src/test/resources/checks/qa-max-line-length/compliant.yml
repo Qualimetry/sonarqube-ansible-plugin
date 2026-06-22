@@ -1,0 +1,5 @@
+# Compliant: short lines
+- hosts: all
+  tasks:
+    - name: Ping
+      ping:

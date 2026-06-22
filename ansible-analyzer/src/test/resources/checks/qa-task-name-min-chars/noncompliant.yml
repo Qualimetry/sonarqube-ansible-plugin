@@ -1,0 +1,6 @@
+# Name too short (under 3 chars)
+- hosts: all
+  tasks:
+# Noncompliant {{Task name should be at least 3 characters.}}
+    - name: Hi
+      ping:

@@ -1,0 +1,16 @@
+{
+  "ruleKey": "qa-safe-file-read",
+  "displayName": "Qa Safe File Read",
+  "severity": "MINOR",
+  "defaultActive": true,
+  "allPassed": true,
+  "fixtures": [
+    {
+      "name": "default-compliant.yml",
+      "status": "PASS",
+      "expectedIssues": [],
+      "actualIssues": [],
+      "mismatches": []
+    }
+  ]
+}

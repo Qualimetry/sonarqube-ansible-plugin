@@ -1,0 +1,11 @@
+# Compliant handlers - Qualimetry Way (has names)
+---
+- name: Restart application
+  ansible.builtin.systemd:
+    name: app
+    state: restarted
+
+- name: Reload nginx
+  ansible.builtin.service:
+    name: nginx
+    state: reloaded

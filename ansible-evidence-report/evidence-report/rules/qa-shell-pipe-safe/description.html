@@ -1,0 +1,14 @@
+<p>In a shell pipeline, the return code is by default that of the last command. If an earlier command fails (e.g. <code>cat</code> fails), the pipeline can still succeed and produce wrong or empty output. That can hide failures and cause incorrect behavior.</p>
+<p>Use <code>set -o pipefail</code> so the pipeline fails when any command in it fails, or split the work into separate tasks so each step is checked.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You use a pipe in a shell or command task.</li><li>Failure of the first or middle command should fail the task.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Prefer <code>shell: set -o pipefail && your | pipeline</code> so the task fails if any part of the pipeline fails.</li><li>Or use the command module with argv (e.g. <code>wc -l /etc/hosts</code>) to avoid pipes where possible.</li></ul>
+<h2>Noncompliant</h2>
+<pre>- name: Get count
+  shell: cat /etc/hosts | wc -l</pre>
+<h2>Compliant</h2>
+<pre>- name: Get count
+  shell: set -o pipefail && cat /etc/hosts | wc -l</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html">Bash - The Set Builtin (pipefail)</a></li></ul>

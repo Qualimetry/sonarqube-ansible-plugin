@@ -1,0 +1,13 @@
+<p>Fact names (set_fact, or facts from tasks) should follow a consistent convention (e.g. lowercase with underscores) so they are predictable and avoid clashes with reserved names.</p>
+<h3>Ask yourself whether</h3>
+<ul><li>You use mixed case or hyphens in fact names.</li></ul>
+<h3>Recommended practices</h3>
+<ul><li>Use lowercase and underscores for fact names (e.g. app_installed, config_path).</li></ul>
+<h2>Noncompliant</h2>
+<pre>- set_fact:
+    MyFact: value</pre>
+<h2>Compliant</h2>
+<pre>- set_fact:
+    my_fact: value</pre>
+<p><strong>See</strong></p>
+<ul><li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html">Ansible - Variables</a></li></ul>

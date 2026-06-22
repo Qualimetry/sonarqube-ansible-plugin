@@ -1,0 +1,6 @@
+# Invalid YAML - unclosed quote (parser may report at various lines; evidence accepts as file-level)
+- hosts: all
+  tasks:
+  - name: Bad
+    # Noncompliant
+    copy: "src=foo
